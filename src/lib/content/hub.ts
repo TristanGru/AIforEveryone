@@ -1,0 +1,90 @@
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import type { HubArticle, Bucket } from '@/types'
+
+const HUB_DIR = path.join(process.cwd(), 'content', 'hub')
+
+const VALID_BUCKETS: Bucket[] = ['models', 'business', 'regulation', 'tools']
+
+function getAllBuckets(): Bucket[] {
+  if (!fs.existsSync(HUB_DIR)) return []
+  return fs
+    .readdirSync(HUB_DIR)
+    .filter((d) => VALID_BUCKETS.includes(d as Bucket)) as Bucket[]
+}
+
+function parseArticleFile(bucket: Bucket, filename: string): HubArticle | null {
+  const filePath = path.join(HUB_DIR, bucket, filename)
+  try {
+    const raw = fs.readFileSync(filePath, 'utf-8')
+    const { data, content } = matter(raw)
+    const slug = filename.replace('.mdx', '')
+
+    if (data.slug && data.slug !== slug) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn(`[hub] Slug mismatch in ${filename}: frontmatter="${data.slug}" file="${slug}"`)
+      }
+    }
+
+    const relatedSlugs = (data.relatedSlugs ?? []) as string[]
+    const allSlugsInBucket = getArticlesByBucket(bucket).map((a) => a.slug)
+    const validRelated = relatedSlugs.filter((s) => {
+      if (!allSlugsInBucket.includes(s)) {
+        if (process.env.NODE_ENV !== 'production') {
+          console.warn(`[hub] Missing related slug "${s}" in ${filename}`)
+        }
+        return false
+      }
+      return true
+    })
+
+    return {
+      slug,
+      bucket,
+      title: data.title as string,
+      level: data.level,
+      readingTimeMin: data.readingTimeMin as number,
+      excerpt: data.excerpt as string,
+      keyTakeaways: data.keyTakeaways as [string, string, string],
+      publishedAt: data.publishedAt as string,
+      lastReviewed: data.lastReviewed as string,
+      sources: data.sources ?? [],
+      relatedSlugs: validRelated,
+      tags: data.tags,
+      body: content,
+    }
+  } catch {
+    return null
+  }
+}
+
+export function getArticlesByBucket(bucket: Bucket): HubArticle[] {
+  const bucketDir = path.join(HUB_DIR, bucket)
+  if (!fs.existsSync(bucketDir)) return []
+
+  return fs
+    .readdirSync(bucketDir)
+    .filter((f) => f.endsWith('.mdx'))
+    .map((filename) => parseArticleFile(bucket, filename))
+    .filter((a): a is HubArticle => a !== null)
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+}
+
+export function getArticle(bucket: Bucket, slug: string): HubArticle | null {
+  return parseArticleFile(bucket, `${slug}.mdx`)
+}
+
+export function getAllArticles(): HubArticle[] {
+  return getAllBuckets()
+    .flatMap((bucket) => getArticlesByBucket(bucket))
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+}
+
+export function getRelatedArticles(article: HubArticle): HubArticle[] {
+  if (!article.relatedSlugs?.length) return []
+  return article.relatedSlugs
+    .map((slug) => getArticle(article.bucket, slug))
+    .filter((a): a is HubArticle => a !== null)
+    .slice(0, 3)
+}

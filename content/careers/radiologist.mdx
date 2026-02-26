@@ -1,0 +1,104 @@
+---
+slug: 'radiologist'
+title: 'Radiologist'
+category: 'healthcare'
+threatLevel: 'significant'
+threatExplainer: >
+  AI tools match expert accuracy on specific imaging tasks — retinopathy screening, chest X-ray triage, mammography second reads. Regulatory requirements and liability frameworks keep radiologists essential, but the role is shifting from routine reads toward AI supervision, complex case interpretation, and clinical consultation.
+summary: >
+  AI matches expert accuracy on routine imaging; radiologists shift toward oversight, complex cases, and patient consultation.
+version: '1.0'
+publishedAt: '2026-02-24'
+lastUpdated: '2026-02-24'
+whatIsChanging:
+  - >
+    FDA-cleared AI tools are now deployed in radiology workflows across major health systems for tasks including chest X-ray triage, stroke detection on CT, pulmonary embolism flagging, and mammography second reads. These tools are reducing the time to identify critical findings from hours to minutes in emergency settings. Radiologists using these tools review AI-prioritized worklists rather than working through cases sequentially.
+  - >
+    Routine screening reads — the high-volume, lower-complexity work that has historically filled radiologist schedules — are being handled with increasing AI assistance. The time per read is compressing. Health systems are studying whether the same number of radiologists can handle significantly more volume with AI assistance, or whether fewer radiologists will be needed.
+  - >
+    The radiologist's role is expanding into clinical consultation. As AI handles the detection layer of routine reads, radiologists are being asked to spend more time in tumor boards, consulting with ordering physicians, and interpreting complex multi-modality cases that require contextual clinical judgment AI cannot yet provide.
+companyAdoptions:
+  - company: 'Nuance Communications (Microsoft)'
+    sector: 'Healthcare AI'
+    aiUse: 'PowerScribe Workflow Companion uses AI to auto-populate radiology report templates and flag critical findings, reducing report turnaround time by 25% in deployed health systems.'
+    sourceUrl: 'https://www.nuance.com/healthcare/diagnostic-radiology.html'
+    year: 2025
+  - company: 'Google Health'
+    sector: 'Healthcare Technology'
+    aiUse: 'ARDA (AI Radiology Diagnostic Assistant) deployed for mammography screening in partnership with health systems. Equivalent sensitivity to a second radiologist reader in controlled trials.'
+    sourceUrl: 'https://health.google/health-research/imaging-and-diagnostics'
+    year: 2025
+  - company: 'Aidoc'
+    sector: 'Radiology AI'
+    aiUse: 'AI platform deployed in 1,200+ hospitals for triage of critical findings in CT, MRI, and X-ray. Automatically escalates high-priority cases to the top of the radiologist worklist.'
+    sourceUrl: 'https://www.aidoc.com'
+    year: 2026
+skillImplications:
+  declining:
+    - 'Routine screening reads on high-volume, lower-complexity modalities'
+    - 'Sequential case processing without AI prioritization'
+  growing:
+    - 'AI tool supervision and quality assurance'
+    - 'Complex multi-modality case interpretation'
+    - 'Clinical consultation and tumor board participation'
+    - 'Radiology informatics and AI implementation oversight'
+  emerging:
+    - 'Radiologist as AI auditor — detecting systematic errors in deployed models'
+    - 'Interventional radiology expansion as diagnostic reading is augmented'
+weeklySignalId: ''
+recommendedReading:
+  - title: 'Will AI Replace Radiologists? A Radiologist Answers'
+    url: 'https://www.nejm.org/doi/full/10.1056/NEJMp2300926'
+    source: 'New England Journal of Medicine'
+    level: 'accessible'
+  - title: 'FDA-Cleared AI Algorithms in Radiology: Current State'
+    url: 'https://pubs.rsna.org/doi/full/10.1148/radiol.2025243112'
+    source: 'Radiology (RSNA)'
+    level: 'technical'
+toolsWorthKnowing:
+  - name: 'Aidoc'
+    url: 'https://www.aidoc.com'
+    oneLiner: 'AI triage platform for critical finding detection across CT, MRI, and X-ray.'
+  - name: 'Nuance PowerScribe'
+    url: 'https://www.nuance.com/healthcare/diagnostic-radiology.html'
+    oneLiner: 'AI-augmented radiology reporting and workflow orchestration.'
+  - name: 'Viz.ai'
+    url: 'https://www.viz.ai'
+    oneLiner: 'AI-powered care coordination for stroke, pulmonary embolism, and aortic disease.'
+---
+
+Radiology sits at the center of the healthcare AI debate — it was the specialty Geoffrey Hinton famously predicted would be largely automated "in five years" back in 2016. That prediction was wrong in its timeline, but not entirely wrong in its direction. The profession is changing in ways that were not predictable a decade ago.
+
+<Accessible>
+
+## What Radiologists Need to Know
+
+The AI tools transforming radiology are not replacing radiologists — they're changing what radiologists spend their time on. This distinction matters.
+
+FDA-cleared AI is now reading alongside radiologists at hundreds of hospitals. In stroke protocols, AI can identify large vessel occlusions in seconds and alert the care team before the radiologist has opened the study. In mammography, AI second-reads are catching cancers that would have been missed. These are genuine improvements in patient care.
+
+What's also true: these tools are doing work that used to require radiologist reading time. The volume of routine reads is increasing, but so is AI assistance. Whether this leads to needing fewer radiologists or allowing the same number to do more volume — and more complex work — is the open question health systems are working through right now.
+
+The radiologists positioning themselves well are:
+
+- **Expanding into clinical consultation.** Spending more time in tumor boards and with ordering physicians, providing the interpretive context that AI outputs cannot.
+- **Becoming informatics leaders.** The radiologists who understand how AI diagnostic tools work — their error modes, their validation requirements, their integration into clinical workflows — are becoming essential for AI deployment decisions.
+- **Focusing on complex cases.** The ambiguous, multi-finding, clinically complex cases remain where human expertise is clearly essential and AI is clearly inadequate.
+
+</Accessible>
+
+<Technical>
+
+## AI Diagnostic Tools: Technical Context for Radiologists
+
+The current generation of FDA-cleared radiology AI operates primarily on convolutional neural networks (CNNs) trained on large labeled datasets of imaging studies. Understanding these systems' failure modes is essential for radiologists who supervise them.
+
+**Distribution shift** is the most common source of AI error in deployed systems. A model trained on imaging from academic medical centers may underperform on imaging from community hospitals with different equipment, patient demographics, or image acquisition protocols. Radiologists reviewing AI outputs should be particularly skeptical when the clinical context differs significantly from the tool's training population.
+
+**Sensitivity-specificity tradeoffs** in AI triage tools are typically tuned for high sensitivity at the cost of specificity. A stroke detection AI that flags every possible large vessel occlusion will generate false positives that radiologists must clear. Understanding the operating point of each tool in your department is critical for workflow design.
+
+**Model explainability** — why the AI flagged a finding — is improving but remains limited. Attention maps and saliency visualization help, but they are not reliable explanations and should not substitute for radiologist judgment. Recent research on mechanistic interpretability may improve this, but current clinical tools do not implement it.
+
+**Regulatory framework**: the FDA's De Novo and 510(k) pathways for AI/ML-based Software as a Medical Device (SaMD) require manufacturers to specify the intended use population, performance metrics on validation sets, and post-market surveillance plans. Radiologists evaluating AI tools should request these validation reports and assess whether the validation population matches their patient population.
+
+</Technical>

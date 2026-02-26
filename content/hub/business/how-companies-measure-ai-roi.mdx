@@ -1,0 +1,101 @@
+---
+slug: 'how-companies-measure-ai-roi'
+bucket: 'business'
+title: 'How Companies Actually Measure AI ROI'
+level: 'accessible'
+readingTimeMin: 8
+excerpt: >
+  Most AI ROI calculations miss hidden costs and misattribute gains. Here is the three-factor framework that consultants use to build honest business cases.
+keyTakeaways:
+  - 'Most companies measure AI ROI by cost savings alone, missing quality and speed gains that compound over time'
+  - 'The three-factor framework covers time saved, error reduction, and decision quality improvement — each requires different measurement approaches'
+  - 'Realistic payback periods for enterprise AI deployments are 18-36 months, not the 6-month projections commonly used in pitch decks'
+publishedAt: '2026-02-24'
+lastReviewed: '2026-02-24'
+sources:
+  - name: 'McKinsey Global Institute — The State of AI 2025'
+    url: 'https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai'
+  - name: 'MIT Sloan Management Review — Measuring AI Value'
+    url: 'https://sloanreview.mit.edu/article/measuring-ai-value-the-hidden-complexity'
+  - name: 'Gartner — AI ROI Framework 2025'
+    url: 'https://www.gartner.com/en/documents/ai-roi-framework'
+relatedSlugs: []
+tags: ['roi', 'enterprise', 'business-case']
+---
+
+Every AI pitch deck includes a ROI slide. Most of them are wrong — not because the numbers are fabricated, but because they measure the wrong things. Here is how to build an honest AI business case.
+
+<Accessible>
+
+## Why Most AI ROI Calculations Are Misleading
+
+Walk into any AI vendor presentation and you'll see the same math: "Our tool saves 3 hours per employee per week. You have 500 employees. That's 1,500 hours per week. At $50/hour, that's $3.9 million in annual value. The tool costs $500K. Done."
+
+This calculation is wrong for three reasons:
+
+**1. It confuses time freed with money saved.** The 1,500 hours you recapture from AI automation don't disappear from payroll. Employees keep getting paid. The value is only realized if those recaptured hours are redirected to higher-value work — which requires active management, not passive hope.
+
+**2. It ignores implementation costs.** Enterprise AI deployments involve integration work, change management, training, data preparation, and ongoing maintenance. These costs routinely run 2-4x the software license cost in year one. Most ROI calculations omit them.
+
+**3. It ignores quality effects.** AI tools often change quality as well as speed. Sometimes quality improves (AI catches errors humans miss). Sometimes it degrades (AI outputs require more review than original work). The net effect on quality is almost never accounted for.
+
+## The Three-Factor Framework
+
+McKinsey's AI practice uses a framework that breaks value creation into three distinct categories, each requiring different measurement approaches:
+
+### Factor 1: Time Freed
+
+**What to measure:** Hours per employee per week on tasks before AI, versus after AI, for the specific tasks being automated. Crucially: what do employees *actually do* with freed time? Use time tracking or manager observation, not surveys (people systematically overestimate their time savings).
+
+**Honest math:** If 50% of freed hours translate to higher-value work and 50% are absorbed by new administrative work, your time-freed value is half what the simple calculation suggests.
+
+### Factor 2: Error Reduction
+
+**What to measure:** Error rate before AI versus after, cost per error (including downstream correction costs and reputational effects), and false positive/negative rate of the AI itself.
+
+**Honest math:** AI error reduction often offsets AI errors. A tool that reduces manual errors by 40% but introduces a 15% AI error rate may be a net positive — or not, depending on relative error costs. Calculate both.
+
+### Factor 3: Decision Quality
+
+**What to measure:** This is the hardest to quantify. Proxy metrics include: time to decision, consistency of decisions across similar cases, outcomes of AI-assisted decisions vs. non-AI-assisted decisions (requires A/B testing or historical comparison).
+
+**Honest math:** Decision quality improvements often don't show up in 6-month ROI calculations. They compound over years and are best measured in outcome data — customer retention, sales win rates, default rates, patient outcomes — not in process metrics.
+
+## Realistic Timelines
+
+Based on enterprise deployment data, expect:
+
+- **Month 1-6:** Net negative. Implementation costs, productivity dip during transition, and change resistance.
+- **Month 6-12:** Break-even territory. Tools are integrated, users are trained, workflows are adapted.
+- **Month 12-24:** Positive ROI on measurable metrics. Quality effects beginning to show.
+- **Month 24-36:** Full ROI realization including compound quality effects.
+
+Any business case projecting payback in under 12 months for a significant enterprise deployment should be scrutinized carefully.
+
+## What Good Measurement Looks Like
+
+The companies measuring AI ROI well share three practices:
+
+1. **Define "success" before deployment**, not after. Pick 2-3 measurable outcomes that matter to the business and commit to measuring them rigorously.
+
+2. **Run a controlled pilot first.** Deploy to a subset of users, keep a control group, and measure real outcomes before scaling. This builds credibility for the business case and surfaces problems early.
+
+3. **Track value realization, not just deployment.** Many organizations track the rollout of AI tools. Few track whether the expected value actually materialized six months later. Build value realization reviews into the deployment plan.
+
+</Accessible>
+
+<Technical>
+
+## Technical Measurement Methods for AI ROI
+
+For teams implementing rigorous AI ROI measurement, several technical approaches improve accuracy:
+
+**Difference-in-differences (DiD) analysis** compares outcomes for users before and after AI adoption, controlling for general trends by comparing against a control group that didn't adopt. This is the gold standard for internal ROI studies but requires clean historical data and a comparable control group.
+
+**A/B testing with Bayesian statistics** for decision quality measurement allows you to detect meaningful differences in outcomes (conversion rates, error rates, customer satisfaction scores) with specified confidence levels. Frequentist p-values are often misinterpreted in business contexts; Bayesian approaches allow you to directly estimate the probability that AI-assisted decisions outperform a baseline.
+
+**Activity-based costing (ABC)** for time freed: rather than asking employees how long tasks take, instrument the software systems they use. CRM, EHR, and legal document systems often have usage logs that can establish ground truth on time-per-task before and after AI integration.
+
+**Cost accounting for hidden implementation costs:** a complete implementation cost model should include: engineering time for integration (often 3-6 months of FTE at staff rate), data preparation and labeling if required, security review and compliance work, change management and training programs, ongoing model monitoring and maintenance, and vendor support costs above baseline SLA.
+
+</Technical>

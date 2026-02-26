@@ -1,0 +1,110 @@
+---
+slug: 'understanding-llms-without-the-jargon'
+bucket: 'models'
+title: 'Understanding Large Language Models Without the Jargon'
+level: 'accessible'
+readingTimeMin: 12
+excerpt: >
+  What are large language models actually doing when they respond to you? This plain-language explainer covers how LLMs work, why they make mistakes, and what that means for using them effectively.
+keyTakeaways:
+  - 'LLMs predict the most likely next word based on patterns in their training data — they do not reason, retrieve facts, or understand meaning in the way humans do'
+  - 'Hallucinations happen because LLMs are optimized to produce fluent, plausible text, not accurate text — this is a feature of how they work, not a bug to be fixed'
+  - 'Understanding these limitations helps you use AI tools more effectively: verify facts, provide context, and treat AI output as a starting point rather than a conclusion'
+publishedAt: '2026-02-24'
+lastReviewed: '2026-02-24'
+sources:
+  - name: 'Andrej Karpathy — Intro to Large Language Models'
+    url: 'https://www.youtube.com/watch?v=zjkBMFhNj_g'
+  - name: 'Stephen Wolfram — What Is ChatGPT Doing?'
+    url: 'https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/'
+  - name: 'MIT Technology Review — The LLM Explainer'
+    url: 'https://www.technologyreview.com/2023/03/what-is-a-large-language-model'
+relatedSlugs: []
+tags: ['explainer', 'llm', 'beginners']
+---
+
+If you want to use AI tools well, it helps to understand what they're actually doing. Not at a technical level — you don't need to understand the math. But at the level of: "what is this thing, and why does it behave the way it does?"
+
+<Accessible>
+
+## What an LLM Actually Is
+
+A large language model is, at its core, a very sophisticated autocomplete system.
+
+You've experienced autocomplete before — on your phone, when you type "I'll be there in" and it suggests "20 minutes" or "a bit." Your phone learned what words follow what other words by watching how you write.
+
+LLMs do the same thing, but at an incomprehensibly larger scale. They trained on hundreds of billions of words from books, websites, code, scientific papers, and conversations — essentially a large portion of human written knowledge. From that training, they learned: given this sequence of words, what word is most likely to come next?
+
+When you ask ChatGPT or Claude a question, here's what actually happens:
+1. Your question is converted into a format the model understands (tokens — roughly chunks of words).
+2. The model processes your tokens and generates a response one word at a time.
+3. Each word is chosen based on: "given everything before this word (your question + the response so far), what word is most likely to come next?"
+4. This continues until the model decides it's done.
+
+That's it. There's no database it's looking up. No reasoning system deciding what's true. Just very sophisticated pattern matching at enormous scale.
+
+## Why LLMs Are Impressive Despite This
+
+If LLMs are "just" autocomplete, why can they write code, answer complex questions, translate languages, and explain concepts they've never explicitly been taught?
+
+Because training on enough human language means absorbing an enormous amount of encoded knowledge. When scientists write papers, they explain their reasoning. When engineers write documentation, they include how-to instructions. When teachers write textbooks, they break down complex concepts. The LLM absorbs all of this — and learns to reproduce the patterns of how experts think and explain.
+
+When you ask "What causes inflation?", the model doesn't look up the answer. It asks: "What sequence of words typically follows a question about inflation in the kind of text an economist or teacher might write?" And because it trained on economic writing, it produces an economically accurate response.
+
+This is different from knowing — but the results are often indistinguishable from knowing, which is what makes these systems so striking.
+
+## Why LLMs Make Mistakes (and What Kind)
+
+Understanding LLM mistakes requires understanding what they're optimized for: **producing fluent, plausible text** — not accurate text.
+
+During training, the model learned to produce responses that read like the responses a knowledgeable human would write. It learned what good answers look like structurally, tonally, and stylistically. It did *not* learn "check whether this fact is true before including it."
+
+This is why LLMs "hallucinate" — produce confident-sounding falsehoods. When asked about a topic, the model generates what a fluent, knowledgeable response would look like, including specific details. If it doesn't have reliable training data on a topic, it will generate plausible-sounding details that may be fabricated.
+
+The model cannot tell the difference between "I know this" and "I'm extrapolating from patterns." To the model, there is no difference — it's all pattern completion.
+
+### Types of LLM Mistakes
+
+**Hallucination:** Stating specific facts, citations, statistics, or names that don't exist or are wrong. Particularly common for: specific dates, academic citations, statistics, obscure facts, and anything that requires precision.
+
+**Knowledge cutoff errors:** LLMs are trained on data up to a certain date. They don't know what happened after their training cutoff. Asking about recent events gets you either "I don't have information about that" or, worse, a confident fabrication.
+
+**Context window limitations:** LLMs have a limited "memory" — they can only process a certain amount of text at once. In very long conversations, they may forget context from earlier in the conversation.
+
+**Instruction following failures:** Sometimes LLMs don't do what you asked. This is usually a prompt design issue — the model interpreted your instruction differently than you intended.
+
+## Using This Knowledge to Get Better Results
+
+Understanding how LLMs work changes how you should use them:
+
+**Verify facts independently.** For anything where accuracy matters — legal questions, medical information, statistics, citations — don't trust AI output without verification. The model sounds confident whether it's right or wrong.
+
+**Provide context.** The model knows nothing about you, your situation, or your specific needs unless you tell it. More context = better output. Tell it your role, your audience, what you've already considered, and what format you need.
+
+**Treat output as a first draft.** The model produces what the average expert response looks like. Your job is to improve it, correct errors, and add the specific knowledge only you have.
+
+**Shorter conversations work better for tasks.** For a fresh task, start a new conversation. Long conversations are more likely to degrade in quality as the model's context window fills.
+
+**Ask for what you want, specifically.** Vague inputs produce vague outputs. "Help me with this email" → mediocre draft. "Write a reply to this email in a direct, professional tone under 100 words, declining the meeting request and suggesting we connect next quarter instead" → good draft.
+
+</Accessible>
+
+<Technical>
+
+## Technical Architecture: Transformer Models
+
+The "T" in ChatGPT stands for transformer — the neural network architecture underlying all modern LLMs.
+
+**Transformer architecture** (introduced by Google researchers in "Attention Is All You Need," 2017) uses a mechanism called **self-attention** to process entire sequences of tokens simultaneously, rather than sequentially as previous RNN-based models did. This parallelization enabled training on vastly larger datasets and unlocked the scale that makes modern LLMs possible.
+
+**Self-attention** allows each token to "attend to" every other token in the context window, learning which tokens are most relevant to each other for the current prediction. The attention weights are learned during training. This is why LLMs can handle long-range dependencies (connecting a pronoun to its antecedent many sentences earlier) that earlier models struggled with.
+
+**Scaling laws** (Kaplan et al., 2020; Hoffmann et al., 2022 "Chinchilla") showed that model performance scales predictably with three factors: model parameters, training compute, and training data. Chinchilla established that most models were undertrained relative to their parameter count — leading to a shift toward smaller models trained on more data (which is why Llama 3 8B can outperform early GPT-3 at 175B parameters).
+
+**Reinforcement Learning from Human Feedback (RLHF)** is the training technique that transforms raw language models into chatbots. Base models (pre-trained on next-token prediction) are aligned to be helpful, harmless, and honest by having human raters score responses and using those scores to fine-tune the model's reward function. This is why Claude and ChatGPT behave differently from raw GPT models — RLHF shapes their "personality" and safety behaviors.
+
+**Emergent capabilities** — the observation that some capabilities appear suddenly as model scale increases rather than improving gradually — are not fully understood. Instruction following, chain-of-thought reasoning, and multi-step problem solving all emerged at scale without being explicitly trained. Whether this represents genuine reasoning or sophisticated pattern completion remains an open research question.
+
+**Context windows** are expanding rapidly: GPT-4 launched with 8K tokens, now supports 128K. Claude 3 supports up to 200K tokens (roughly 150,000 words). The engineering challenges are significant — attention computation scales quadratically with context length, requiring architectural innovations (grouped query attention, flash attention, sparse attention) to make long contexts computationally feasible.
+
+</Technical>
