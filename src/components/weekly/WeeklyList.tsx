@@ -5,15 +5,18 @@ import { WeeklyListItem } from './WeeklyListItem'
 import { WeeklyProgress } from './WeeklyProgress'
 import { BucketFilter } from './BucketFilter'
 import { LevelFilter } from './LevelFilter'
+import { GoingDeeper } from './GoingDeeper'
+import { ReadingStreak } from './ReadingStreak'
 import { useReadState } from '@/lib/hooks/useReadState'
-import type { WeeklyItem, Bucket, Level } from '@/types'
+import type { WeeklyItem, BonusItem, Bucket, Level } from '@/types'
 
 interface WeeklyListProps {
   items: WeeklyItem[]
   week: string
+  bonusItems?: BonusItem[]
 }
 
-export function WeeklyList({ items, week }: WeeklyListProps) {
+export function WeeklyList({ items, week, bonusItems = [] }: WeeklyListProps) {
   const { readCount, isRead, toggleRead } = useReadState(week)
   const [bucketFilter, setBucketFilter] = useState<Bucket | 'all'>('all')
   const [levelFilter, setLevelFilter] = useState<Level | 'all'>('all')
@@ -26,7 +29,10 @@ export function WeeklyList({ items, week }: WeeklyListProps) {
 
   return (
     <div className="space-y-6">
-      <WeeklyProgress readCount={readCount} total={items.length} />
+      <div className="flex items-center justify-between">
+        <WeeklyProgress readCount={readCount} total={items.length} />
+        <ReadingStreak />
+      </div>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <BucketFilter active={bucketFilter} onChange={setBucketFilter} />
@@ -34,11 +40,11 @@ export function WeeklyList({ items, week }: WeeklyListProps) {
       </div>
 
       {filtered.length === 0 ? (
-        <p className="rounded-xl border bg-card p-6 text-center text-muted-foreground">
+        <p className="py-10 text-center text-sm text-muted-foreground">
           No items match your current filters. Try selecting &ldquo;All&rdquo;.
         </p>
       ) : (
-        <div className="space-y-4">
+        <div>
           {filtered.map((item) => (
             <WeeklyListItem
               key={item.id}
@@ -49,6 +55,8 @@ export function WeeklyList({ items, week }: WeeklyListProps) {
           ))}
         </div>
       )}
+
+      <GoingDeeper items={bonusItems} />
     </div>
   )
 }

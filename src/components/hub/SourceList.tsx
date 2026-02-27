@@ -1,4 +1,3 @@
-import { ExternalLink } from 'lucide-react'
 import type { Source } from '@/types'
 
 interface SourceListProps {
@@ -9,26 +8,32 @@ export function SourceList({ sources }: SourceListProps) {
   if (!sources.length) return null
 
   return (
-    <section className="mt-8 border-t pt-6">
-      <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Sources</h2>
-      <ul className="mt-3 space-y-2">
+    <section className="mt-10 border-t border-border pt-7">
+      <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
+        Sources
+      </h2>
+      <ol className="space-y-2.5">
         {sources.map((source, i) => (
-          <li key={i} className="flex items-start gap-2 text-sm">
-            <ExternalLink className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-muted-foreground" aria-hidden="true" />
+          <li key={i} className="flex items-baseline gap-3 text-sm">
+            <span className="flex-shrink-0 text-xs text-muted-foreground tabular-nums w-4">
+              {i + 1}.
+            </span>
             <div>
               <a
                 href={source.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium hover:text-primary hover:underline"
+                className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary transition-colors"
               >
                 {source.name}
               </a>
-              {source.note && <p className="text-muted-foreground">{source.note}</p>}
+              {source.note && (
+                <p className="mt-0.5 text-xs text-muted-foreground">{source.note}</p>
+              )}
             </div>
           </li>
         ))}
-      </ul>
+      </ol>
     </section>
   )
 }

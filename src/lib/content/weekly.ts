@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { startOfWeek, subWeeks, isMonday, parseISO } from 'date-fns'
-import type { WeeklyList, WeeklyItem } from '@/types'
+import type { WeeklyList, WeeklyItem, BonusItem } from '@/types'
 
 const WEEKLY_DIR = path.join(process.cwd(), 'content', 'weekly')
 
@@ -30,6 +30,7 @@ function parseWeeklyFile(filename: string): WeeklyList | null {
       week: data.week as string,
       items: items as WeeklyList['items'],
       featuredSlot: (data.featuredSlot ?? 1) as WeeklyList['featuredSlot'],
+      bonusItems: (data.bonusItems ?? []) as BonusItem[],
     }
   } catch {
     if (process.env.NODE_ENV !== 'production') {

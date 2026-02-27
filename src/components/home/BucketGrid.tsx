@@ -1,54 +1,62 @@
 import Link from 'next/link'
-import { Brain, Briefcase, Scale, Wrench } from 'lucide-react'
 import type { Bucket } from '@/types'
 
-const BUCKETS: Array<{ bucket: Bucket; label: string; description: string; icon: React.ElementType }> = [
+const BUCKETS: Array<{ bucket: Bucket; label: string; description: string }> = [
   {
     bucket: 'models',
     label: 'Models',
     description: 'Understand AI models — LLMs, image generators, and what the benchmarks mean.',
-    icon: Brain,
   },
   {
     bucket: 'business',
     label: 'Business',
     description: 'How companies adopt AI, measure ROI, and transform their workflows.',
-    icon: Briefcase,
   },
   {
     bucket: 'regulation',
     label: 'Regulation',
     description: 'AI policy, the EU AI Act, and what regulation means for your industry.',
-    icon: Scale,
   },
   {
     bucket: 'tools',
     label: 'Tools',
     description: 'Practical guides to AI tools that actually save time.',
-    icon: Wrench,
   },
 ]
 
 export function BucketGrid() {
   return (
-    <section aria-labelledby="hub-heading" className="py-8">
-      <div className="container mx-auto max-w-6xl px-4">
-        <h2 id="hub-heading" className="text-2xl font-bold">
-          Knowledge Hub
-        </h2>
-        <p className="mt-1 text-muted-foreground">
+    <section aria-labelledby="hub-heading" className="border-b border-border py-10">
+      <div className="container mx-auto max-w-content px-4 sm:px-6">
+        <div className="mb-6 flex items-baseline justify-between gap-4">
+          <h2 id="hub-heading" className="text-xl font-bold tracking-tight">
+            Knowledge Hub
+          </h2>
+          <Link
+            href="/hub"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Browse all →
+          </Link>
+        </div>
+
+        <p className="mb-8 max-w-xl text-sm text-muted-foreground">
           Explore AI through four lenses. Every article is available in Accessible and Technical modes.
         </p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {BUCKETS.map(({ bucket, label, description, icon: Icon }) => (
+
+        <div className="grid gap-0 divide-y divide-border sm:grid-cols-2 sm:divide-y-0 sm:gap-x-12 sm:gap-y-8">
+          {BUCKETS.map(({ bucket, label, description }) => (
             <Link
               key={bucket}
               href={`/hub/${bucket}`}
-              className="group flex flex-col rounded-xl border bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
+              className="group flex items-start gap-4 py-5 sm:py-0"
             >
-              <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
-              <h3 className="mt-3 font-semibold group-hover:text-primary">{label}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{description}</p>
+              <div className="mt-0.5 w-20 flex-shrink-0 text-xs font-semibold uppercase tracking-widest text-primary">
+                {label}
+              </div>
+              <p className="text-sm leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors">
+                {description}
+              </p>
             </Link>
           ))}
         </div>

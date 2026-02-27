@@ -6,7 +6,6 @@ import { HeroSection } from '@/components/home/HeroSection'
 import { TopStoryCard } from '@/components/home/TopStoryCard'
 import { BucketGrid } from '@/components/home/BucketGrid'
 import { CareerSpotlight } from '@/components/home/CareerSpotlight'
-import { AdSlot } from '@/components/layout/AdSlot'
 import { JsonLd } from '@/components/shared/JsonLd'
 
 export const metadata = getHomeMetadata()
@@ -43,9 +42,6 @@ export default async function HomePage() {
       {featuredItem && <TopStoryCard item={featuredItem} week={list.week} />}
       <BucketGrid />
       {spotlightCareer && <CareerSpotlight career={spotlightCareer} />}
-      <div className="container mx-auto max-w-6xl px-4 py-6">
-        <AdSlot slot="hero" className="min-h-[90px]" />
-      </div>
     </>
   )
 }

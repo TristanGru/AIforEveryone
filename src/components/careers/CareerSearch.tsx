@@ -10,6 +10,7 @@ import type { CareerMeta, CareerCategory } from '@/types'
 const CATEGORIES: Array<{ value: CareerCategory | 'all'; label: string }> = [
   { value: 'all', label: 'All' },
   { value: 'white-collar', label: 'White Collar' },
+  { value: 'blue-collar', label: 'Blue Collar' },
   { value: 'creative', label: 'Creative' },
   { value: 'healthcare', label: 'Healthcare' },
 ]

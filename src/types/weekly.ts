@@ -17,8 +17,16 @@ export interface WeeklyItem {
   tags?: string[]
 }
 
+export interface BonusItem {
+  title: string
+  source: string
+  url: string
+  why?: string
+}
+
 export interface WeeklyList {
   week: string
   items: [WeeklyItem, WeeklyItem, WeeklyItem, WeeklyItem, WeeklyItem]
   featuredSlot: 1 | 2 | 3 | 4 | 5
+  bonusItems?: BonusItem[]
 }

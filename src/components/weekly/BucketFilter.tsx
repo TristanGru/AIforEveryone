@@ -25,10 +25,10 @@ export function BucketFilter({ active, onChange }: BucketFilterProps) {
           onClick={() => onChange(value)}
           aria-pressed={active === value}
           className={cn(
-            'rounded-full border px-3 py-1 text-sm font-medium transition-colors',
+            'border-b-2 px-2 pb-1.5 text-xs font-medium transition-colors',
             active === value
-              ? 'border-primary bg-primary text-primary-foreground'
-              : 'border-border bg-background text-muted-foreground hover:border-primary/50 hover:text-foreground'
+              ? 'border-primary text-foreground'
+              : 'border-transparent text-muted-foreground hover:text-foreground'
           )}
         >
           {label}

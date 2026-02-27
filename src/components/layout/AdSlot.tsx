@@ -25,7 +25,6 @@ export function AdSlot({ slot, className }: AdSlotProps) {
   useEffect(() => {
     if (!CLIENT_ID || !slotId) return
     try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ;((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({})
     } catch {}
   }, [slotId])
@@ -40,7 +39,7 @@ export function AdSlot({ slot, className }: AdSlotProps) {
         className={`flex items-center justify-center rounded-md border-2 border-dashed border-border bg-muted/30 p-4 text-xs text-muted-foreground ${className ?? ''}`}
         aria-hidden="true"
       >
-        Ad slot: {slot} (placeholder — set NEXT_PUBLIC_ADSENSE_CLIENT_ID to activate)
+        Advertisement
       </div>
     )
   }

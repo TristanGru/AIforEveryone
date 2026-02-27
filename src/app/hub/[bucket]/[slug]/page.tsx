@@ -10,7 +10,6 @@ import { ArticleCard } from '@/components/hub/ArticleCard'
 import { BucketBadge } from '@/components/shared/BucketBadge'
 import { LevelBadge } from '@/components/shared/LevelBadge'
 import { ReadingTime } from '@/components/shared/ReadingTime'
-import { AdSlot } from '@/components/layout/AdSlot'
 import { JsonLd } from '@/components/shared/JsonLd'
 import { TechnicalModeProvider } from '@/context/TechnicalModeContext'
 import { Accessible, Technical } from '@/components/hub/ModeContent'
@@ -95,35 +94,33 @@ export default async function ArticlePage({ params }: Props) {
 
       <TechnicalToggle />
 
-      <div className="container mx-auto max-w-3xl px-4 py-8">
+      <div className="container mx-auto max-w-article px-4 py-8 sm:px-6">
         {/* Breadcrumb */}
-        <nav className="mb-4 flex items-center gap-1 text-xs text-muted-foreground" aria-label="Breadcrumb">
-          <Link href="/hub" className="hover:text-foreground">Hub</Link>
-          <span aria-hidden="true">/</span>
-          <Link href={`/hub/${article.bucket}`} className="hover:text-foreground capitalize">
+        <nav className="mb-6 flex items-center gap-1.5 text-xs text-muted-foreground" aria-label="Breadcrumb">
+          <Link href="/hub" className="hover:text-foreground transition-colors">Hub</Link>
+          <span aria-hidden="true" className="text-border">·</span>
+          <Link href={`/hub/${article.bucket}`} className="hover:text-foreground capitalize transition-colors">
             {article.bucket}
           </Link>
-          <span aria-hidden="true">/</span>
-          <span className="text-foreground">{article.title}</span>
         </nav>
 
         {/* Header */}
-        <header>
-          <div className="flex flex-wrap items-center gap-2">
+        <header className="mb-8 pb-8 border-b border-border">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
             <BucketBadge bucket={article.bucket} />
-            <LevelBadge level={article.level} />
             <ReadingTime minutes={article.readingTimeMin} />
-            <time dateTime={article.publishedAt} className="text-xs text-muted-foreground">
+            <time dateTime={article.publishedAt} className="text-2xs text-muted-foreground">
               {formatDate(article.publishedAt)}
             </time>
           </div>
-          <h1 className="mt-3 text-3xl font-bold leading-tight">{article.title}</h1>
-          <p className="mt-2 text-lg text-muted-foreground">{article.excerpt}</p>
+          <h1 className="font-serif text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+            {article.title}
+          </h1>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{article.excerpt}</p>
         </header>
 
         <KeyTakeaways takeaways={article.keyTakeaways} />
 
-        <AdSlot slot="article" className="my-6 min-h-[90px]" />
 
         {/* MDX Body */}
         <article className="prose prose-slate max-w-none">
@@ -134,9 +131,11 @@ export default async function ArticlePage({ params }: Props) {
 
         {/* Related articles */}
         {related.length > 0 && (
-          <section className="mt-10 border-t pt-8" aria-labelledby="related-heading">
-            <h2 id="related-heading" className="text-lg font-semibold">Related Articles</h2>
-            <div className="mt-4 space-y-3">
+          <section className="mt-10 border-t border-border pt-8" aria-labelledby="related-heading">
+            <h2 id="related-heading" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
+              Related Articles
+            </h2>
+            <div>
               {related.map((r) => (
                 <ArticleCard key={r.slug} article={r} compact />
               ))}

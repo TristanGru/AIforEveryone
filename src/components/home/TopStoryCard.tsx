@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { BucketBadge } from '@/components/shared/BucketBadge'
-import { LevelBadge } from '@/components/shared/LevelBadge'
 import { ReadingTime } from '@/components/shared/ReadingTime'
 import type { WeeklyItem } from '@/types'
 import { formatDate } from '@/lib/utils'
@@ -12,32 +11,49 @@ interface TopStoryCardProps {
 
 export function TopStoryCard({ item, week }: TopStoryCardProps) {
   return (
-    <section aria-labelledby="top-story-heading" className="py-8">
-      <div className="container mx-auto max-w-6xl px-4">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Top Story — Week of {formatDate(week)}
-        </p>
-        <div className="rounded-xl border bg-card p-6 shadow-sm">
-          <div className="flex flex-wrap items-center gap-2">
+    <section aria-labelledby="top-story-heading" className="border-b border-border py-10">
+      <div className="container mx-auto max-w-content px-4 sm:px-6">
+        <div className="flex items-baseline gap-3 mb-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            Top Story
+          </p>
+          <span className="text-xs text-muted-foreground">— Week of {formatDate(week)}</span>
+        </div>
+
+        <div className="max-w-2xl">
+          <div className="flex flex-wrap items-center gap-3 mb-3">
             <BucketBadge bucket={item.bucket} />
-            <LevelBadge level={item.level} />
             <ReadingTime minutes={item.readingTimeMin} />
           </div>
-          <h2 id="top-story-heading" className="mt-3 text-xl font-semibold leading-snug sm:text-2xl">
+
+          <h2 id="top-story-heading" className="font-serif text-2xl font-bold leading-snug tracking-tight sm:text-3xl">
             <a
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary hover:underline"
+              className="hover:text-primary transition-colors"
             >
               {item.title}
             </a>
           </h2>
-          <p className="mt-1 text-sm text-muted-foreground">{item.source}</p>
-          <p className="mt-3 text-sm leading-relaxed text-foreground/80">{item.summary}</p>
-          <div className="mt-4">
-            <Link href="/weekly" className="text-sm font-medium text-primary hover:underline">
-              See full weekly list →
+
+          <p className="mt-1.5 text-sm text-muted-foreground">{item.source}</p>
+          <p className="mt-3 text-base leading-relaxed text-foreground/80">{item.summary}</p>
+
+          <div className="mt-5 flex items-center gap-6">
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-primary underline underline-offset-4 decoration-primary/40 hover:decoration-primary transition-colors"
+            >
+              Read article →
+            </a>
+            <Link
+              href="/weekly"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Full week&apos;s list
             </Link>
           </div>
         </div>

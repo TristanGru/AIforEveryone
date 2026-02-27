@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -18,19 +17,24 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2" aria-label="AI Decoded home">
-          <Image src="/logo.svg" alt="AI Decoded logo" width={120} height={40} priority />
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
+      <div className="container mx-auto flex h-14 max-w-content items-center justify-between px-4 sm:px-6">
+        {/* Wordmark — no image dependency, typographic logo */}
+        <Link
+          href="/"
+          className="font-serif text-lg font-bold tracking-tight text-foreground hover:text-primary transition-colors"
+          aria-label="AI Decoded home"
+        >
+          AI Decoded
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation">
           {NAV_LINKS.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {label}
             </Link>
@@ -39,13 +43,13 @@ export function Header() {
         </nav>
 
         {/* Mobile menu toggle */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-3 md:hidden">
           <ThemeToggle />
           <button
-          className="flex items-center md:hidden"
-          onClick={() => setMobileOpen((o) => !o)}
-          aria-expanded={mobileOpen}
-          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            className="flex items-center text-muted-foreground hover:text-foreground transition-colors"
+            onClick={() => setMobileOpen((o) => !o)}
+            aria-expanded={mobileOpen}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileOpen ? (
               <X className="h-5 w-5" aria-hidden="true" />
@@ -59,17 +63,17 @@ export function Header() {
       {/* Mobile nav */}
       {mobileOpen && (
         <nav
-          className="border-t bg-background px-4 pb-4 md:hidden"
+          className="border-t border-border bg-background px-4 pb-5 md:hidden"
           aria-label="Mobile navigation"
         >
-          <ul className="flex flex-col gap-1 pt-2">
+          <ul className="flex flex-col pt-3">
             {NAV_LINKS.map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
                   className={cn(
-                    'block rounded-md px-3 py-2 text-sm font-medium',
-                    'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                    'block border-b border-border py-3 text-sm text-muted-foreground',
+                    'hover:text-foreground transition-colors'
                   )}
                   onClick={() => setMobileOpen(false)}
                 >

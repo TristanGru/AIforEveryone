@@ -7,6 +7,22 @@ const HUB_DIR = path.join(process.cwd(), 'content', 'hub')
 
 const VALID_BUCKETS: Bucket[] = ['models', 'business', 'regulation', 'tools']
 
+function calculateReadingTime(content: string): number {
+  // Base reading time on the Accessible section only (the default view)
+  const introText = content.match(/^([\s\S]*?)<Accessible>/)?.[1] ?? ''
+  const accessibleText = content.match(/<Accessible>([\s\S]*?)<\/Accessible>/)?.[1] ?? content
+
+  const plainText = (introText + accessibleText)
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`[^`]+`/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[#*_~|]/g, '')
+    .trim()
+  const wordCount = plainText.split(/\s+/).filter(Boolean).length
+  return Math.max(1, Math.round(wordCount / 230))
+}
+
 function getAllBuckets(): Bucket[] {
   if (!fs.existsSync(HUB_DIR)) return []
   return fs
@@ -44,7 +60,7 @@ function parseArticleFile(bucket: Bucket, filename: string): HubArticle | null {
       bucket,
       title: data.title as string,
       level: data.level,
-      readingTimeMin: data.readingTimeMin as number,
+      readingTimeMin: calculateReadingTime(content),
       excerpt: data.excerpt as string,
       keyTakeaways: data.keyTakeaways as [string, string, string],
       publishedAt: data.publishedAt as string,

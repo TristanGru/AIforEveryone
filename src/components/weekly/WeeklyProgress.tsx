@@ -12,19 +12,18 @@ export function WeeklyProgress({ readCount, total }: WeeklyProgressProps) {
   const pct = total > 0 ? Math.round((readCount / total) * 100) : 0
 
   return (
-    <div className="rounded-xl border bg-card p-4">
-      <p className="text-sm font-medium">
+    <div className="flex items-center gap-4 pb-4 border-b border-border">
+      <p className="text-sm text-muted-foreground">
         {allDone ? (
-          <span className="text-green-700">✓ All caught up this week!</span>
+          <span className="text-emerald-700 dark:text-emerald-400 font-medium">All caught up this week</span>
         ) : (
           <>
-            You&apos;ve read{' '}
-            <span className="font-semibold text-primary">{readCount}</span> of {total} this week
+            <span className="font-semibold text-foreground">{readCount}</span> of {total} read this week
           </>
         )}
       </p>
       <div
-        className="mt-2 h-2 w-full overflow-hidden rounded-full bg-muted"
+        className="h-1 w-24 flex-shrink-0 overflow-hidden bg-border"
         role="progressbar"
         aria-valuenow={readCount}
         aria-valuemin={0}
@@ -33,8 +32,8 @@ export function WeeklyProgress({ readCount, total }: WeeklyProgressProps) {
       >
         <div
           className={cn(
-            'h-full rounded-full transition-all duration-300',
-            allDone ? 'bg-green-500' : 'bg-primary'
+            'h-full transition-all duration-300',
+            allDone ? 'bg-emerald-500' : 'bg-primary'
           )}
           style={{ width: `${pct}%` }}
         />

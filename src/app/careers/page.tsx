@@ -25,12 +25,9 @@ export default async function CareersPage() {
   return (
     <>
       <JsonLd data={itemListJsonLd} />
-      <div className="container mx-auto max-w-6xl px-4 py-10">
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold">How AI Affects Your Career</h1>
-          <p className="mt-2 text-muted-foreground">
-            Threat levels, skill analysis, and what to do about it for {careers.length}+ professions.
-          </p>
+      <div className="container mx-auto max-w-content px-4 py-10 sm:px-6">
+        <header className="mb-8 pb-8 border-b border-border">
+          <h1 className="text-2xl font-bold tracking-tight">How AI Affects Your Career</h1>
         </header>
 
         <CareerSearch careers={careers} />

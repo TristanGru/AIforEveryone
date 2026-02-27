@@ -2,9 +2,9 @@ import { cn } from '@/lib/utils'
 import type { Level } from '@/types'
 
 const LEVEL_CONFIG: Record<Level, { label: string; className: string }> = {
-  accessible: { label: 'Accessible', className: 'bg-gray-100 text-gray-700' },
-  intermediate: { label: 'Intermediate', className: 'bg-sky-100 text-sky-700' },
-  technical: { label: 'Technical', className: 'bg-rose-100 text-rose-700' },
+  accessible: { label: 'Accessible', className: 'text-muted-foreground' },
+  intermediate: { label: 'Intermediate', className: 'text-muted-foreground' },
+  technical: { label: 'Technical', className: 'text-muted-foreground' },
 }
 
 interface LevelBadgeProps {
@@ -17,7 +17,7 @@ export function LevelBadge({ level, className }: LevelBadgeProps) {
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium',
+        'text-2xs font-medium uppercase tracking-widest',
         colorClass,
         className
       )}

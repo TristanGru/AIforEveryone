@@ -1,59 +1,52 @@
-import { TrendingDown, TrendingUp, Sparkles } from 'lucide-react'
 import type { SkillImplications } from '@/types'
 
 interface SkillsMatrixProps {
   skills: SkillImplications
 }
 
+function SkillColumn({
+  title,
+  items,
+  accent,
+}: {
+  title: string
+  items: string[]
+  accent: string
+}) {
+  return (
+    <div>
+      <h3 className={`text-xs font-semibold uppercase tracking-widest mb-3 ${accent}`}>{title}</h3>
+      <ul className="space-y-2">
+        {items.map((skill, i) => (
+          <li key={i} className="text-sm text-muted-foreground leading-snug">
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 export function SkillsMatrix({ skills }: SkillsMatrixProps) {
   return (
-    <section className="my-6" aria-labelledby="skills-heading">
-      <h2 id="skills-heading" className="text-xl font-bold">Skills Matrix</h2>
-      <div className="mt-4 grid gap-4 sm:grid-cols-3">
-        {/* Declining */}
-        <div className="rounded-xl border-l-4 border-l-red-400 bg-card p-4">
-          <div className="flex items-center gap-2">
-            <TrendingDown className="h-4 w-4 text-red-500" aria-hidden="true" />
-            <h3 className="text-sm font-semibold text-red-700">Declining</h3>
-          </div>
-          <ul className="mt-3 space-y-1.5">
-            {skills.declining.map((skill, i) => (
-              <li key={i} className="text-sm text-muted-foreground before:mr-1.5 before:content-['•']">
-                {skill}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Growing */}
-        <div className="rounded-xl border-l-4 border-l-green-400 bg-card p-4">
-          <div className="flex items-center gap-2">
-            <TrendingUp className="h-4 w-4 text-green-500" aria-hidden="true" />
-            <h3 className="text-sm font-semibold text-green-700">Growing</h3>
-          </div>
-          <ul className="mt-3 space-y-1.5">
-            {skills.growing.map((skill, i) => (
-              <li key={i} className="text-sm text-muted-foreground before:mr-1.5 before:content-['•']">
-                {skill}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Emerging */}
-        <div className="rounded-xl border-l-4 border-l-indigo-400 bg-card p-4">
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-indigo-500" aria-hidden="true" />
-            <h3 className="text-sm font-semibold text-indigo-700">Emerging</h3>
-          </div>
-          <ul className="mt-3 space-y-1.5">
-            {skills.emerging.map((skill, i) => (
-              <li key={i} className="text-sm text-muted-foreground before:mr-1.5 before:content-['•']">
-                {skill}
-              </li>
-            ))}
-          </ul>
-        </div>
+    <section className="my-8 border-t border-border pt-7" aria-labelledby="skills-heading">
+      <h2 id="skills-heading" className="text-lg font-bold tracking-tight mb-6">Skills Matrix</h2>
+      <div className="grid gap-8 sm:grid-cols-3">
+        <SkillColumn
+          title="Declining"
+          items={skills.declining}
+          accent="text-red-700 dark:text-red-400"
+        />
+        <SkillColumn
+          title="Growing"
+          items={skills.growing}
+          accent="text-emerald-700 dark:text-emerald-400"
+        />
+        <SkillColumn
+          title="Emerging"
+          items={skills.emerging}
+          accent="text-primary"
+        />
       </div>
     </section>
   )

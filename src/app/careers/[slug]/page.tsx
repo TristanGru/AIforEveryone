@@ -7,13 +7,11 @@ import { ThreatLevel } from '@/components/careers/ThreatLevel'
 import { CompanyAdoptionTable } from '@/components/careers/CompanyAdoptionTable'
 import { SkillsMatrix } from '@/components/careers/SkillsMatrix'
 import { WeeklySignal } from '@/components/careers/WeeklySignal'
-import { AdSlot } from '@/components/layout/AdSlot'
 import { LastUpdated } from '@/components/shared/LastUpdated'
 import { JsonLd } from '@/components/shared/JsonLd'
 import { TechnicalModeProvider } from '@/context/TechnicalModeContext'
 import { Accessible, Technical } from '@/components/hub/ModeContent'
 import { TechnicalToggle } from '@/components/hub/TechnicalToggle'
-import { ExternalLink } from 'lucide-react'
 
 interface Props {
   params: { slug: string }
@@ -94,19 +92,20 @@ export default async function CareerPage({ params }: Props) {
         {/* Threat Level */}
         <ThreatLevel level={career.threatLevel} explainer={career.threatExplainer} />
 
-        <AdSlot slot="article" className="my-6 min-h-[90px]" />
 
         {/* What Is Changing */}
-        <section className="my-6" aria-labelledby="changing-heading">
-          <h2 id="changing-heading" className="text-xl font-bold">What Is Changing</h2>
-          <ul className="mt-4 space-y-3">
+        <section className="my-8 border-t border-border pt-7" aria-labelledby="changing-heading">
+          <h2 id="changing-heading" className="text-lg font-bold tracking-tight mb-4">What Is Changing</h2>
+          <ol className="space-y-4">
             {career.whatIsChanging.map((item, i) => (
-              <li key={i} className="flex items-start gap-3 rounded-lg border bg-card p-4 text-sm leading-relaxed">
-                <span className="flex-shrink-0 font-bold text-primary">{i + 1}.</span>
-                <span>{item}</span>
+              <li key={i} className="flex items-start gap-4 text-sm leading-relaxed">
+                <span className="flex-shrink-0 tabular-nums font-semibold text-primary w-5 mt-0.5">
+                  {i + 1}.
+                </span>
+                <span className="text-foreground/85">{item}</span>
               </li>
             ))}
-          </ul>
+          </ol>
         </section>
 
         {/* Company Adoption Table */}
@@ -116,40 +115,37 @@ export default async function CareerPage({ params }: Props) {
         <SkillsMatrix skills={career.skillImplications} />
 
         {/* Weekly Signal */}
-        <section className="my-6" aria-labelledby="signal-heading">
-          <h2 id="signal-heading" className="text-xl font-bold">Weekly Signal</h2>
+        <section className="my-8 border-t border-border pt-7" aria-labelledby="signal-heading">
+          <h2 id="signal-heading" className="text-lg font-bold tracking-tight">Weekly Signal</h2>
           <p className="mt-1 text-sm text-muted-foreground">
             The most relevant AI development this week for {career.title}s.
           </p>
-          <div className="mt-3">
+          <div className="mt-4">
             <WeeklySignal weeklySignalId={career.weeklySignalId} careerTitle={career.title} />
           </div>
         </section>
 
         {/* MDX Body */}
-        <article className="prose prose-slate max-w-none">
+        <article className="prose prose-slate max-w-none mt-8">
           <MDXRemote source={career.body} components={mdxComponents} />
         </article>
 
         {/* Recommended Reading */}
         {career.recommendedReading.length > 0 && (
-          <section className="my-8 border-t pt-6" aria-labelledby="reading-heading">
-            <h2 id="reading-heading" className="text-xl font-bold">Recommended Reading</h2>
-            <ul className="mt-4 space-y-2">
+          <section className="my-8 border-t border-border pt-7" aria-labelledby="reading-heading">
+            <h2 id="reading-heading" className="text-lg font-bold tracking-tight mb-4">Recommended Reading</h2>
+            <ul className="space-y-3">
               {career.recommendedReading.map((item, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm">
-                  <ExternalLink className="mt-0.5 h-4 w-4 flex-shrink-0 text-muted-foreground" aria-hidden="true" />
-                  <div>
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium hover:text-primary hover:underline"
-                    >
-                      {item.title}
-                    </a>
-                    <span className="ml-1.5 text-muted-foreground">— {item.source}</span>
-                  </div>
+                <li key={i} className="text-sm">
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary transition-colors"
+                  >
+                    {item.title}
+                  </a>
+                  <span className="ml-2 text-muted-foreground">— {item.source}</span>
                 </li>
               ))}
             </ul>
@@ -158,22 +154,20 @@ export default async function CareerPage({ params }: Props) {
 
         {/* Tools Worth Knowing */}
         {career.toolsWorthKnowing.length > 0 && (
-          <section className="my-6 border-t pt-6" aria-labelledby="tools-heading">
-            <h2 id="tools-heading" className="text-xl font-bold">Tools Worth Knowing</h2>
-            <ul className="mt-4 space-y-2">
+          <section className="my-8 border-t border-border pt-7" aria-labelledby="tools-heading">
+            <h2 id="tools-heading" className="text-lg font-bold tracking-tight mb-4">Tools Worth Knowing</h2>
+            <ul className="space-y-3">
               {career.toolsWorthKnowing.map((tool, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm">
-                  <div>
-                    <a
-                      href={tool.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium hover:text-primary hover:underline"
-                    >
-                      {tool.name}
-                    </a>
-                    <span className="ml-1.5 text-muted-foreground">— {tool.oneLiner}</span>
-                  </div>
+                <li key={i} className="text-sm">
+                  <a
+                    href={tool.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary transition-colors"
+                  >
+                    {tool.name}
+                  </a>
+                  <span className="ml-2 text-muted-foreground">— {tool.oneLiner}</span>
                 </li>
               ))}
             </ul>

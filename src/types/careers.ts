@@ -1,7 +1,7 @@
 import type { Level } from './weekly'
 
 export type ThreatLevel = 'low' | 'moderate' | 'significant' | 'transformative'
-export type CareerCategory = 'white-collar' | 'creative' | 'healthcare'
+export type CareerCategory = 'white-collar' | 'creative' | 'healthcare' | 'blue-collar'
 
 export interface CompanyAdoption {
   company: string

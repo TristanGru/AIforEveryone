@@ -2,46 +2,39 @@ import Link from 'next/link'
 
 export function Footer() {
   return (
-    <footer className="border-t bg-muted/40">
-      <div className="container mx-auto max-w-6xl px-4 py-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <footer className="mt-16 border-t border-border">
+      <div className="container mx-auto max-w-content px-4 py-10 sm:px-6">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <p className="text-sm font-semibold text-foreground">AI Decoded</p>
-            <p className="mt-1 text-xs text-muted-foreground">
+            <p className="font-serif text-base font-bold tracking-tight text-foreground">
+              AI Decoded
+            </p>
+            <p className="mt-1 text-sm text-muted-foreground">
               AI knowledge made accessible. Published every Monday.
             </p>
           </div>
 
-          <nav className="flex flex-wrap gap-4 text-xs text-muted-foreground" aria-label="Footer navigation">
-            <Link href="/weekly" className="hover:text-foreground">
+          <nav
+            className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground"
+            aria-label="Footer navigation"
+          >
+            <Link href="/weekly" className="hover:text-foreground transition-colors">
               This Week
             </Link>
-            <Link href="/hub" className="hover:text-foreground">
-              Hub
+            <Link href="/hub" className="hover:text-foreground transition-colors">
+              Knowledge Hub
             </Link>
-            <Link href="/careers" className="hover:text-foreground">
+            <Link href="/careers" className="hover:text-foreground transition-colors">
               Careers
             </Link>
-            <Link href="/about" className="hover:text-foreground">
+            <Link href="/about" className="hover:text-foreground transition-colors">
               About
             </Link>
           </nav>
         </div>
 
-        <div className="mt-6 border-t pt-4">
+        <div className="mt-8 border-t border-border pt-6">
           <p className="text-xs text-muted-foreground">
-            This site uses Google AdSense, which may set cookies.{' '}
-            <a
-              href="https://policies.google.com/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-foreground"
-            >
-              Google Privacy Policy
-            </a>
-            .
-          </p>
-          <p className="mt-1 text-xs text-muted-foreground">
             © {new Date().getFullYear()} AI Decoded. All rights reserved.
           </p>
         </div>

@@ -81,6 +81,17 @@ items:
     summary: >
       <!-- TODO: 2-3 sentence original summary. -->
     tags: []
+
+bonusItems:
+  - title: '<!-- TODO: Bonus article title -->'
+    source: '<!-- TODO: Publisher name -->'
+    url: 'https://example.com/bonus-1'
+    why: '<!-- TODO: One sentence on why to read this. -->'
+
+  - title: '<!-- TODO: Bonus article title -->'
+    source: '<!-- TODO: Publisher name -->'
+    url: 'https://example.com/bonus-2'
+    why: '<!-- TODO: One sentence on why to read this. -->'
 ---
 `
 

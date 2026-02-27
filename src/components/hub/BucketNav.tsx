@@ -15,16 +15,16 @@ interface BucketNavProps {
 
 export function BucketNav({ activeBucket }: BucketNavProps) {
   return (
-    <nav className="flex flex-wrap gap-2" aria-label="Knowledge hub buckets">
+    <nav className="flex flex-wrap gap-6 border-b border-border pb-0" aria-label="Knowledge hub buckets">
       {BUCKETS.map(({ bucket, label }) => (
         <Link
           key={bucket}
           href={`/hub/${bucket}`}
           className={cn(
-            'rounded-full border px-4 py-1.5 text-sm font-medium transition-colors',
+            'pb-3 text-sm transition-colors border-b-2 -mb-px',
             activeBucket === bucket
-              ? 'border-primary bg-primary text-primary-foreground'
-              : 'border-border text-muted-foreground hover:border-primary/50 hover:text-foreground'
+              ? 'border-primary font-semibold text-foreground'
+              : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
           )}
           aria-current={activeBucket === bucket ? 'page' : undefined}
         >

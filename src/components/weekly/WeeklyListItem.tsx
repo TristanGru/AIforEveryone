@@ -3,16 +3,15 @@
 import { track } from '@vercel/analytics/react'
 import { Check } from 'lucide-react'
 import { BucketBadge } from '@/components/shared/BucketBadge'
-import { LevelBadge } from '@/components/shared/LevelBadge'
 import { ReadingTime } from '@/components/shared/ReadingTime'
 import { ShareButton } from '@/components/shared/ShareButton'
 import { cn } from '@/lib/utils'
 import type { WeeklyItem } from '@/types'
 
 const DAY_HINT_LABEL: Record<string, string> = {
-  sunday: '📅 Good for Sunday reading',
-  wednesday: '📅 Good for midweek',
-  friday: '📅 Good for Friday wind-down',
+  sunday: 'Good for Sunday',
+  wednesday: 'Good for midweek',
+  friday: 'Good for Friday',
 }
 
 interface WeeklyListItemProps {
@@ -43,57 +42,61 @@ export function WeeklyListItem({ item, isRead, onToggleRead }: WeeklyListItemPro
   return (
     <article
       className={cn(
-        'rounded-xl border bg-card p-5 shadow-sm transition-opacity',
-        isRead && 'opacity-60'
+        'border-b border-border py-6 transition-opacity last:border-b-0',
+        isRead && 'opacity-50'
       )}
       aria-label={`${item.title}${isRead ? ' — marked as read' : ''}`}
     >
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-3 mb-2">
         <BucketBadge bucket={item.bucket} />
-        <LevelBadge level={item.level} />
         <ReadingTime minutes={item.readingTimeMin} />
         {item.dayHint && (
-          <span className="text-xs text-muted-foreground">{DAY_HINT_LABEL[item.dayHint]}</span>
+          <span className="text-2xs text-muted-foreground italic">
+            {DAY_HINT_LABEL[item.dayHint]}
+          </span>
         )}
       </div>
 
-      <h2 className="mt-3 text-lg font-semibold leading-snug">
+      <h2 className="text-lg font-semibold leading-snug tracking-tight">
         <a
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleExternalClick}
-          className={cn('hover:text-primary hover:underline', isRead && 'line-through')}
+          className={cn(
+            'hover:text-primary transition-colors',
+            isRead && 'line-through'
+          )}
         >
           {item.title}
         </a>
       </h2>
-      <p className="mt-0.5 text-sm text-muted-foreground">{item.source}</p>
+      <p className="mt-0.5 text-xs text-muted-foreground">{item.source}</p>
       <p className="mt-2 text-sm leading-relaxed text-foreground/80">{item.summary}</p>
 
-      <div className="mt-4 flex flex-wrap items-center gap-3">
+      <div className="mt-4 flex flex-wrap items-center gap-4">
         <button
           onClick={handleToggle}
           aria-pressed={isRead}
           className={cn(
-            'inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-colors',
+            'inline-flex items-center gap-1.5 text-xs font-medium transition-colors',
             isRead
-              ? 'bg-green-100 text-green-800 hover:bg-green-200'
-              : 'border border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+              ? 'text-emerald-700 dark:text-emerald-400'
+              : 'text-muted-foreground hover:text-foreground'
           )}
         >
           {isRead && <Check className="h-3.5 w-3.5" aria-hidden="true" />}
-          {isRead ? 'Read' : 'Mark as Read'}
+          {isRead ? 'Read' : 'Mark as read'}
         </button>
 
         <ShareButton url={item.url} title={item.title} itemId={item.id} />
 
         {item.tags && item.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1" aria-label="Tags">
+          <div className="flex flex-wrap gap-2" aria-label="Tags">
             {item.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground"
+                className="text-2xs text-muted-foreground"
               >
                 #{tag}
               </span>

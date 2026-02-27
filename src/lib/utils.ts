@@ -27,3 +27,10 @@ export function truncate(str: string, maxLength: number): string {
   if (str.length <= maxLength) return str
   return str.slice(0, maxLength - 1) + '…'
 }
+
+export function isNewContent(dateStr: string, days = 7): boolean {
+  const now = new Date()
+  const date = new Date(dateStr + 'T00:00:00')
+  const diffDays = (now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24)
+  return diffDays >= 0 && diffDays <= days
+}
