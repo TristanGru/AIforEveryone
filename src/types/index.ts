@@ -1,4 +1,4 @@
-export type { Bucket, Level, DayHint, WeeklyItem, WeeklyList } from './weekly'
+export type { Bucket, Level, DayHint, WeeklyItem, WeeklyList, BonusItem } from './weekly'
 export type { Source, HubArticle } from './hub'
 export type {
   ThreatLevel,
