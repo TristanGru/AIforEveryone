@@ -14,7 +14,7 @@ export function GoingDeeper({ items }: GoingDeeperProps) {
         Going Deeper
       </h2>
       <p className="text-sm text-muted-foreground mb-5">
-        Optional reads for those who want more.
+        Optional reads for those who want more. (Some may be behind a paywall)
       </p>
       <ul className="space-y-4">
         {items.map((item, i) => (

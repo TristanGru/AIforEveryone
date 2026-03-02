@@ -6,7 +6,6 @@ import { getCareerMetadata } from '@/lib/seo/metadata'
 import { ThreatLevel } from '@/components/careers/ThreatLevel'
 import { CompanyAdoptionTable } from '@/components/careers/CompanyAdoptionTable'
 import { SkillsMatrix } from '@/components/careers/SkillsMatrix'
-import { WeeklySignal } from '@/components/careers/WeeklySignal'
 import { LastUpdated } from '@/components/shared/LastUpdated'
 import { JsonLd } from '@/components/shared/JsonLd'
 import { TechnicalModeProvider } from '@/context/TechnicalModeContext'
@@ -113,17 +112,6 @@ export default async function CareerPage({ params }: Props) {
 
         {/* Skills Matrix */}
         <SkillsMatrix skills={career.skillImplications} />
-
-        {/* Weekly Signal */}
-        <section className="my-8 border-t border-border pt-7" aria-labelledby="signal-heading">
-          <h2 id="signal-heading" className="text-lg font-bold tracking-tight">Weekly Signal</h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            The most relevant AI development this week for {career.title}s.
-          </p>
-          <div className="mt-4">
-            <WeeklySignal weeklySignalId={career.weeklySignalId} careerTitle={career.title} />
-          </div>
-        </section>
 
         {/* MDX Body */}
         <article className="prose prose-slate max-w-none mt-8">

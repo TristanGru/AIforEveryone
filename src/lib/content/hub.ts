@@ -44,16 +44,22 @@ function parseArticleFile(bucket: Bucket, filename: string): HubArticle | null {
     }
 
     const relatedSlugs = (data.relatedSlugs ?? []) as string[]
-    const allSlugsInBucket = getArticlesByBucket(bucket).map((a) => a.slug)
-    const validRelated = relatedSlugs.filter((s) => {
-      if (!allSlugsInBucket.includes(s)) {
-        if (process.env.NODE_ENV !== 'production') {
-          console.warn(`[hub] Missing related slug "${s}" in ${filename}`)
+    let validRelated: string[] = []
+    if (relatedSlugs.length > 0) {
+      const bucketDir = path.join(HUB_DIR, bucket)
+      const allSlugsInBucket = fs.existsSync(bucketDir)
+        ? fs.readdirSync(bucketDir).filter((f) => f.endsWith('.mdx')).map((f) => f.replace('.mdx', ''))
+        : []
+      validRelated = relatedSlugs.filter((s) => {
+        if (!allSlugsInBucket.includes(s)) {
+          if (process.env.NODE_ENV !== 'production') {
+            console.warn(`[hub] Missing related slug "${s}" in ${filename}`)
+          }
+          return false
         }
-        return false
-      }
-      return true
-    })
+        return true
+      })
+    }
 
     return {
       slug,

@@ -9,10 +9,11 @@ import type { CareerMeta, CareerCategory } from '@/types'
 
 const CATEGORIES: Array<{ value: CareerCategory | 'all'; label: string }> = [
   { value: 'all', label: 'All' },
-  { value: 'white-collar', label: 'White Collar' },
-  { value: 'blue-collar', label: 'Blue Collar' },
-  { value: 'creative', label: 'Creative' },
-  { value: 'healthcare', label: 'Healthcare' },
+  { value: 'knowledge-workers', label: 'Knowledge Workers' },
+  { value: 'skilled-trades', label: 'Skilled Trades' },
+  { value: 'service-workers', label: 'Service Workers' },
+  { value: 'administrative', label: 'Administrative' },
+  { value: 'industrial-workers', label: 'Industrial Workers' },
 ]
 
 interface CareerSearchProps {
