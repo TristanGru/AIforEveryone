@@ -33,6 +33,7 @@ const WeeklyListSchema = z.object({
   week: DateSchema,
   featuredSlot: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4), z.literal(5)]).optional(),
   items: z.array(WeeklyItemSchema).length(5, 'Weekly list must have exactly 5 items'),
+  careerSpotlightSlug: z.string().regex(/^[a-z0-9-]+$/).optional(),
 })
 
 const SourceSchema = z.object({

@@ -1,6 +1,7 @@
 import { getCurrentWeek, getAllWeeks } from '@/lib/content/weekly'
 import { getWeeklyMetadata } from '@/lib/seo/metadata'
 import { WeeklyList } from '@/components/weekly/WeeklyList'
+import { WeeklyCareerSpotlight } from '@/components/weekly/WeeklyCareerSpotlight'
 import { WeeklyArchive } from '@/components/weekly/WeeklyArchive'
 import { JsonLd } from '@/components/shared/JsonLd'
 import { formatDate } from '@/lib/utils'
@@ -47,7 +48,10 @@ export default async function WeeklyPage() {
         </header>
 
 {list.items.length > 0 ? (
-          <WeeklyList items={list.items} week={list.week} bonusItems={list.bonusItems} />
+          <>
+            <WeeklyList items={list.items} week={list.week} bonusItems={list.bonusItems} />
+            {list.careerSpotlightSlug && <WeeklyCareerSpotlight slug={list.careerSpotlightSlug} />}
+          </>
         ) : (
           <p className="py-12 text-center text-sm text-muted-foreground">
             No articles published yet. Check back Monday.

@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getWeekByDate, getAllWeeks } from '@/lib/content/weekly'
 import { WeeklyList } from '@/components/weekly/WeeklyList'
+import { WeeklyCareerSpotlight } from '@/components/weekly/WeeklyCareerSpotlight'
 import { formatDate } from '@/lib/utils'
 
 export async function generateStaticParams() {
@@ -28,7 +29,10 @@ export default async function WeekArchivePage({ params }: { params: { date: stri
       </header>
 
       {list.items.length > 0 ? (
-        <WeeklyList items={list.items} week={list.week} bonusItems={list.bonusItems} />
+        <>
+          <WeeklyList items={list.items} week={list.week} bonusItems={list.bonusItems} />
+          {list.careerSpotlightSlug && <WeeklyCareerSpotlight slug={list.careerSpotlightSlug} />}
+        </>
       ) : (
         <p className="py-12 text-center text-sm text-muted-foreground">
           No articles for this week.

@@ -29,4 +29,5 @@ export interface WeeklyList {
   items: [WeeklyItem, WeeklyItem, WeeklyItem, WeeklyItem, WeeklyItem]
   featuredSlot: 1 | 2 | 3 | 4 | 5
   bonusItems?: BonusItem[]
+  careerSpotlightSlug?: string
 }

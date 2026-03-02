@@ -31,6 +31,7 @@ function parseWeeklyFile(filename: string): WeeklyList | null {
       items: items as WeeklyList['items'],
       featuredSlot: (data.featuredSlot ?? 1) as WeeklyList['featuredSlot'],
       bonusItems: (data.bonusItems ?? []) as BonusItem[],
+      careerSpotlightSlug: data.careerSpotlightSlug as string | undefined,
     }
   } catch {
     if (process.env.NODE_ENV !== 'production') {
