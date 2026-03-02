@@ -26,22 +26,20 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        working-directory: ai-decoded
         run: npm ci --ignore-scripts
 
       - name: Build
-        working-directory: ai-decoded
         env:
           NEXT_PUBLIC_SITE_URL: https://aidecodedbrief.com
         run: npm run build
 
       - name: Add .nojekyll
-        run: touch ai-decoded/out/.nojekyll
+        run: touch out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ai-decoded/out
+          path: out
 
   deploy:
     needs: build
