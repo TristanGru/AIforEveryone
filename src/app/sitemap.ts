@@ -3,7 +3,7 @@ import { getAllWeeks } from '@/lib/content/weekly'
 import { getAllArticles } from '@/lib/content/hub'
 import { getAllCareers } from '@/lib/content/careers'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecoded.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecodedbrief.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const weeks = getAllWeeks()

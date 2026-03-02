@@ -53,7 +53,7 @@ export default async function ArticlePage({ params }: Props) {
   if (!article) notFound()
 
   const related = getRelatedArticles(article)
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecoded.com'
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecodedbrief.com'
 
   const articleJsonLd = {
     '@context': 'https://schema.org',

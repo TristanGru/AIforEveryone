@@ -23,13 +23,13 @@ export default async function HomePage() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'AI Decoded',
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecoded.com',
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecodedbrief.com',
     description: metadata.description,
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecoded.com'}/careers?q={search_term_string}`,
+        urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecodedbrief.com'}/careers?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },

@@ -33,7 +33,7 @@ export default async function CareerPage({ params }: Props) {
   const career = getCareer(params.slug)
   if (!career) notFound()
 
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecoded.com'
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecodedbrief.com'
   const pageUrl = `${SITE_URL}/careers/${career.slug}`
 
   const articleJsonLd = {

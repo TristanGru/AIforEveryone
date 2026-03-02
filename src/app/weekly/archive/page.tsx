@@ -22,7 +22,7 @@ export default async function WeeklyArchivePage() {
           {weeks.map(({ week }) => (
             <li key={week}>
               <Link
-                href={`/weekly?week=${week}`}
+                href={`/weekly/${week}`}
                 className="flex items-center justify-between px-5 py-4 text-sm hover:bg-accent"
               >
                 <span className="font-medium">Week of {formatDate(week)}</span>

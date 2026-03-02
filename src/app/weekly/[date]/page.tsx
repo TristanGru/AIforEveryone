@@ -4,8 +4,6 @@ import { getWeekByDate, getAllWeeks } from '@/lib/content/weekly'
 import { WeeklyList } from '@/components/weekly/WeeklyList'
 import { formatDate } from '@/lib/utils'
 
-export const revalidate = 3600
-
 export async function generateStaticParams() {
   return getAllWeeks().map(({ week }) => ({ date: week }))
 }

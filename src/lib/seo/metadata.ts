@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import type { HubArticle, CareerPage, WeeklyList } from '@/types'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecoded.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecodedbrief.com'
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'AI Decoded'
 
 function buildMeta({

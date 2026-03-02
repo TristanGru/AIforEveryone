@@ -3,7 +3,7 @@ import { JsonLd } from '@/components/shared/JsonLd'
 
 export const metadata = getAboutMetadata()
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecoded.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecodedbrief.com'
 
 export default function AboutPage() {
   const jsonLd = {

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   description:
     'AI knowledge made accessible. Weekly reading lists, career impact analysis, and a knowledge hub for everyone navigating the AI era.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecoded.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecodedbrief.com'),
   openGraph: {
     siteName: 'AI Decoded',
     type: 'website',

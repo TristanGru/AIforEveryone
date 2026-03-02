@@ -7,7 +7,7 @@ export const metadata = getCareersMetadata()
 
 export default async function CareersPage() {
   const careers = getAllCareerMeta()
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecoded.com'
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecodedbrief.com'
 
   const itemListJsonLd = {
     '@context': 'https://schema.org',
