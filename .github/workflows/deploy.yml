@@ -31,6 +31,7 @@ jobs:
       - name: Build
         env:
           NEXT_PUBLIC_SITE_URL: https://aidecodedbrief.com
+          NEXT_PUBLIC_FORMSPREE_ID: ${{ secrets.NEXT_PUBLIC_FORMSPREE_ID }}
         run: npm run build
 
       - name: Add .nojekyll

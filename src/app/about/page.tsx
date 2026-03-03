@@ -1,5 +1,6 @@
 import { getAboutMetadata } from '@/lib/seo/metadata'
 import { JsonLd } from '@/components/shared/JsonLd'
+import { ContactForm } from '@/components/about/ContactForm'
 
 export const metadata = getAboutMetadata()
 
@@ -70,12 +71,17 @@ export default function AboutPage() {
             career and trying to make sure I don&apos;t fall behind. AI Decoded is the site I
             wish existed when I started trying to make sense of everything. So I made it.
           </p>
+        </div>
 
-          <h2>Contact</h2>
-          <p>
-            {/* TODO: Add contact information or link */}
+        {/* Contact — outside prose to avoid typography styles on form inputs */}
+        <div className="mt-10 border-t border-border pt-8">
+          <h2 className="text-xl font-bold tracking-tight">Contact</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
             Have a career you&apos;d like to see covered? Found an error? I&apos;d love to hear from you.
           </p>
+          <div className="mt-5">
+            <ContactForm />
+          </div>
         </div>
       </div>
     </>

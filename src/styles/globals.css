@@ -14,8 +14,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 20 8% 8%;
 
-    /* Deep teal-forest: editorial, calm, distinctive */
-    --primary: 162 55% 26%;
+    /* Deep forest green: rich, distinctive, editorial */
+    --primary: 142 65% 22%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 30 12% 96%;
@@ -32,7 +32,7 @@
 
     --border: 30 8% 88%;              /* subtle warm gray */
     --input: 30 8% 88%;
-    --ring: 162 55% 26%;
+    --ring: 142 65% 22%;
 
     /* ─── Shape ───────────────────────────────────────────────────────── */
     --radius: 0.125rem;               /* crisp, editorial — not pill-y */
@@ -52,7 +52,7 @@
     --popover: 24 8% 10%;
     --popover-foreground: 30 10% 93%;
 
-    --primary: 162 50% 42%;          /* slightly lighter for dark contrast */
+    --primary: 142 55% 38%;          /* slightly lighter for dark contrast */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 24 6% 16%;
@@ -69,7 +69,7 @@
 
     --border: 24 6% 18%;
     --input: 24 6% 18%;
-    --ring: 162 50% 42%;
+    --ring: 142 55% 38%;
   }
 }
 

@@ -22,7 +22,7 @@ export function Header() {
         {/* Wordmark — no image dependency, typographic logo */}
         <Link
           href="/"
-          className="font-serif text-lg font-bold tracking-tight text-foreground hover:text-primary transition-colors"
+          className="font-serif text-lg font-bold tracking-tight text-primary transition-colors"
           aria-label="AI Decoded home"
         >
           AI Decoded
