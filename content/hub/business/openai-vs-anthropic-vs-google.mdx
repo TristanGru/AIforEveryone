@@ -1,0 +1,135 @@
+---
+slug: 'openai-vs-anthropic-vs-google'
+bucket: 'business'
+title: 'OpenAI vs. Anthropic vs. Google: How the Major AI Labs Differ'
+level: 'accessible'
+readingTimeMin: 6
+excerpt: >
+  Everyone has heard of ChatGPT, Claude, and Gemini — but what actually separates the companies behind them? This guide breaks down the three dominant AI labs: their origins, their models, their business models, and their very different philosophies about how AI should be built.
+keyTakeaways:
+  - 'OpenAI, Anthropic, and Google DeepMind have fundamentally different origins and cultures — OpenAI started as a nonprofit, Anthropic was founded by safety-focused OpenAI defectors, and Google has the largest research and infrastructure advantage of any lab'
+  - 'Their business models diverge too: OpenAI dominates consumer AI with ChatGPT, Anthropic is most focused on developers and enterprise, and Google embeds AI directly into its existing products'
+  - 'Safety philosophy is the sharpest ideological divide — Anthropic treats alignment research as a core product priority, while OpenAI and Google take a more speed-first approach with safety as an ongoing concern'
+publishedAt: '2026-03-09'
+lastReviewed: '2026-03-09'
+sources:
+  - name: 'OpenAI — Our Structure'
+    url: 'https://openai.com/our-structure'
+  - name: 'Anthropic — Core Views'
+    url: 'https://www.anthropic.com/company'
+  - name: 'Google DeepMind — About'
+    url: 'https://deepmind.google/about'
+relatedSlugs: ['how-companies-measure-ai-roi']
+tags: ['openai', 'anthropic', 'google', 'industry', 'explainer']
+---
+
+If you've spent any time using AI tools, you've probably encountered at least one of the big three: ChatGPT (OpenAI), Claude (Anthropic), or Gemini (Google). They're all impressive. They all feel similar on the surface. So what actually separates them?
+
+Quite a lot, it turns out — in history, culture, incentives, and vision.
+
+<Accessible>
+
+## The Origin Stories
+
+**OpenAI** was founded in 2015 as a nonprofit, backed by Elon Musk, Sam Altman, and others who worried that AI development happening inside large corporations (especially Google) would be dangerous. The idea was to develop AI "for the benefit of all humanity" in the open. In 2019, it converted to a "capped-profit" structure to raise venture capital, and in 2023 it struck a massive partnership with Microsoft — which invested roughly $13 billion and built OpenAI's technology into Bing, Office, and Azure. OpenAI is now converting to a standard for-profit corporation.
+
+**Anthropic** was founded in 2021 by Dario Amodei, Daniela Amodei, and several colleagues who left OpenAI — largely over disagreements about how fast the company was moving and whether it was taking safety seriously enough. Anthropic describes itself as an "AI safety company" that happens to build and sell AI products. Amazon has invested over $4 billion; Google has also invested. The company is private.
+
+**Google DeepMind** is not an independent startup — it's a subsidiary of Alphabet, Google's parent company. Google has been doing AI research longer than any of these companies (the transformer architecture that underlies every modern AI model was invented at Google in 2017). DeepMind, originally a London-based AI research lab, was acquired by Google in 2014 and merged with Google Brain in 2023 to form Google DeepMind. Its flagship models are the Gemini family.
+
+---
+
+## The Products
+
+<table>
+  <thead>
+    <tr>
+      <th>Lab</th>
+      <th>Flagship Models</th>
+      <th>Main Consumer Product</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OpenAI</td>
+      <td>GPT-4o, o1, o3</td>
+      <td>ChatGPT</td>
+    </tr>
+    <tr>
+      <td>Anthropic</td>
+      <td>Claude 3.5, Claude 3.7</td>
+      <td>Claude.ai</td>
+    </tr>
+    <tr>
+      <td>Google</td>
+      <td>Gemini 2.0 Flash, Pro, Ultra</td>
+      <td>Gemini (gemini.google.com)</td>
+    </tr>
+  </tbody>
+</table>
+
+All three offer API access for developers and enterprise contracts for businesses.
+
+---
+
+## How They Make Money
+
+**OpenAI** has the largest consumer footprint. ChatGPT reportedly has over 300 million weekly users. Revenue comes from ChatGPT Plus ($20/month subscriptions), enterprise contracts, and API usage. This consumer dominance is a significant moat — most people's first AI experience is ChatGPT.
+
+**Anthropic** is more focused on developers and enterprises. Claude.ai exists and has a paid tier, but Anthropic's revenue is more concentrated in API and enterprise deals. This makes sense given its origins — it was founded by researchers, not product people, and its culture reflects that.
+
+**Google** has a different game entirely. Rather than building a standalone AI product empire, Google's goal is to embed AI into the products billions of people already use: Search, Gmail, Docs, Maps, YouTube. Gemini is increasingly woven into all of these. Google doesn't need you to switch to a new product — it needs its existing products to stay dominant.
+
+---
+
+## The Safety Philosophy Divide
+
+This is where the real differences live.
+
+**Anthropic** was literally founded because its founders thought OpenAI was moving too fast without adequate safety measures. The company treats AI safety research as a core function — not a PR exercise. It publishes research on interpretability (understanding what's happening inside AI models), has a formal "responsible scaling policy" that governs when it will and won't deploy more powerful models, and runs one of the most active safety research teams in the world. Claude's design reflects this: it's trained to be cautious, to acknowledge uncertainty, and to refuse more types of requests than competitors.
+
+**OpenAI** talks about safety extensively and has published meaningful safety research. But its history tells a more complicated story. The board fired CEO Sam Altman in November 2023 — reportedly over concerns that he wasn't being honest about safety risks — and then rehired him within five days after a near-revolt from employees and investors. Most of the board members who made the safety-driven decision were subsequently replaced. The episode illustrated that commercial and speed pressures are real at OpenAI, whatever the stated mission.
+
+**Google** is the hardest to characterize. It has serious researchers who take safety seriously, and it's been involved in AI ethics research for years. But it's also a publicly traded company with an advertising business to protect, which creates different incentive structures than a research-focused lab. Google has also moved faster than expected to ship Gemini after being caught off guard by ChatGPT's consumer success.
+
+---
+
+## Which Should You Use?
+
+The honest answer: try all three, because they're genuinely different in feel.
+
+**ChatGPT (OpenAI)** is the most capable all-rounder for most tasks. GPT-4o handles text, images, voice, and files. The o1/o3 "reasoning" models are the best available for math, coding, and complex logic problems. If you're new to AI and want one tool to start with, this is still the default recommendation.
+
+**Claude (Anthropic)** tends to excel at long-form writing, careful analysis, and tasks where you want the AI to push back or be honest about what it doesn't know. It also has the largest context window of the mainstream tools, meaning it can handle very long documents. Developers building AI applications often prefer Claude's instruction-following.
+
+**Gemini (Google)** is the right choice if you're deep in Google's ecosystem — it integrates directly with Gmail, Google Docs, Drive, and Search in ways the others can't. Gemini Flash is extremely fast and cheap for high-volume tasks. And for anything involving up-to-date information from the web, Gemini's Google Search integration gives it an edge.
+
+</Accessible>
+
+<Technical>
+
+## Architectural and Training Differences
+
+All three labs use transformer-based architectures, but differ in training approach and design choices:
+
+**OpenAI's o-series models** (o1, o3) represent a distinct direction: inference-time compute scaling. Rather than just training larger models, these models spend more compute *at inference time* by performing chain-of-thought reasoning internally before responding. This is why o3 dramatically outperforms GPT-4o on math and coding benchmarks despite being from the same lab — it's a different paradigm, not just a bigger model. The o-series trades latency for accuracy on hard reasoning tasks.
+
+**Anthropic's Constitutional AI (CAI)** is its primary alignment technique. Rather than using only human raters to score outputs (RLHF), CAI has the model evaluate its own outputs against a set of written principles ("the constitution"), critique them, and revise. This allows alignment signals to be generated synthetically at scale without requiring humans to rate every response. Anthropic's interpretability research — attempting to understand what features activate inside the model — is arguably the most advanced in the industry. The "monosemanticity" work (finding that individual neurons in Claude represent coherent concepts) was a significant finding.
+
+**Google DeepMind's Gemini** architecture is natively multimodal — designed from the ground up to handle text, images, audio, and video, rather than adding modalities to a language-only base. Gemini 2.0 Flash is notable for its efficiency: competitive performance at much lower cost and latency than GPT-4o or Claude. Google's TPU infrastructure gives it a hardware advantage that independent labs cannot easily replicate.
+
+## Business Model and Incentive Analysis
+
+**OpenAI's structure** is unusual and worth understanding. The original nonprofit OpenAI Inc. still exists and controls the for-profit entity. Early investors received "capped" returns (originally 100x). The ongoing conversion to a standard C-corp and the Microsoft relationship created complex governance dynamics — illustrated by the November 2023 board crisis, where the fiduciary duty of the nonprofit board conflicted with the commercial interests of employees and investors.
+
+**Anthropic's** external funding creates interesting dependencies. Amazon's $4B investment came with a commitment to make AWS the primary cloud provider and to give AWS customers preferred access to Claude. Google also invested. Anthropic must remain commercially independent while being financially dependent on two of the largest AI infrastructure players — who are also competitors.
+
+**Google's** position is structurally different. It isn't trying to win the "AI product" market — it's trying to ensure AI doesn't *disrupt* its existing product market. The threat model is: if AI assistants replace web search, Google's core advertising revenue erodes. Gemini in Search (AI Overviews) is an attempt to evolve before being disrupted. This means Google's AI strategy is as much defensive moat-maintenance as it is offense.
+
+## Responsible Scaling Policies
+
+Anthropic's **Responsible Scaling Policy (RSP)** defines "AI Safety Levels" (ASL-1 through ASL-4) analogous to biosafety levels. Each ASL tier requires specific safety and security measures before deployment. ASL-3, which applies to models that could provide "meaningful uplift" to those seeking to create weapons of mass destruction, requires significantly higher security than current models. The RSP is a public commitment that creates accountability — competitors can criticize Anthropic for specific policy decisions in ways they can't with vague safety statements.
+
+OpenAI has a **Preparedness Framework** with similar categorical risk levels. Google DeepMind has published a **Frontier Safety Framework**. All three are attempts to create credible external commitments, though critics note all three are self-assessed and self-enforced.
+
+</Technical>

@@ -124,7 +124,10 @@ export default async function ArticlePage({ params }: Props) {
 
         {/* MDX Body */}
         <article className="prose prose-slate max-w-none">
-          <MDXRemote source={article.body} components={mdxComponents} />
+          <MDXRemote
+            source={article.body}
+            components={mdxComponents}
+          />
         </article>
 
         <SourceList sources={article.sources} />
