@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter, Merriweather } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/react'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { ThemeProvider } from '@/context/ThemeContext'
@@ -57,7 +56,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main id="main-content">{children}</main>
           <Footer />
         </ThemeProvider>
-        <Analytics />
       </body>
     </html>
   )

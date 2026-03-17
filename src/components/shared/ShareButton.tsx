@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { Share2, Check } from 'lucide-react'
-import { track } from '@vercel/analytics/react'
 import { cn } from '@/lib/utils'
 
 interface ShareButtonProps {
@@ -19,7 +18,6 @@ export function ShareButton({ url, title, itemId, className }: ShareButtonProps)
     try {
       if (navigator.share) {
         await navigator.share({ title, url })
-        if (itemId) track('weekly_item_shared', { item_id: itemId, method: 'native' })
         return
       }
     } catch {
@@ -28,7 +26,6 @@ export function ShareButton({ url, title, itemId, className }: ShareButtonProps)
 
     try {
       await navigator.clipboard.writeText(url)
-      if (itemId) track('weekly_item_shared', { item_id: itemId, method: 'clipboard' })
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {

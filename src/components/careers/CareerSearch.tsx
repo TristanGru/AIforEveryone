@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Search } from 'lucide-react'
-import { track } from '@vercel/analytics/react'
 import { buildCareerSearchIndex } from '@/lib/search'
 import { CareerCard } from './CareerCard'
 import type { CareerMeta, CareerCategory } from '@/types'
@@ -32,10 +31,7 @@ export function CareerSearch({ careers }: CareerSearchProps) {
     if (debounceRef.current) clearTimeout(debounceRef.current)
 
     debounceRef.current = setTimeout(() => {
-      if (query.trim().length >= 2) {
-        track('career_search_performed', { query_length: query.trim().length })
-      }
-      const searched = query.trim() ? searchFn(query) : careers
+const searched = query.trim() ? searchFn(query) : careers
       const filtered =
         category === 'all' ? searched : searched.filter((c) => c.category === category)
       setResults(filtered)

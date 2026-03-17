@@ -1,6 +1,5 @@
 'use client'
 
-import { track } from '@vercel/analytics/react'
 import { cn } from '@/lib/utils'
 import { useTechnicalMode } from '@/context/TechnicalModeContext'
 
@@ -9,7 +8,6 @@ export function TechnicalToggle() {
 
   function handleChange(newMode: 'accessible' | 'technical') {
     setMode(newMode)
-    track('technical_mode_toggled', { to_mode: newMode })
   }
 
   return (

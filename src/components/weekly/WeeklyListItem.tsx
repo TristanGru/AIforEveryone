@@ -1,6 +1,5 @@
 'use client'
 
-import { track } from '@vercel/analytics/react'
 import { Check } from 'lucide-react'
 import { BucketBadge } from '@/components/shared/BucketBadge'
 import { ReadingTime } from '@/components/shared/ReadingTime'
@@ -23,20 +22,6 @@ interface WeeklyListItemProps {
 export function WeeklyListItem({ item, isRead, onToggleRead }: WeeklyListItemProps) {
   function handleToggle() {
     onToggleRead(item.id)
-    if (!isRead) {
-      track('weekly_item_read', {
-        item_id: item.id,
-        bucket: item.bucket,
-        slot: item.slot,
-        week: item.week,
-      })
-    } else {
-      track('weekly_item_unread', { item_id: item.id, week: item.week })
-    }
-  }
-
-  function handleExternalClick() {
-    track('outbound_link_clicked', { item_id: item.id, source_page: 'weekly' })
   }
 
   return (
@@ -62,7 +47,6 @@ export function WeeklyListItem({ item, isRead, onToggleRead }: WeeklyListItemPro
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={handleExternalClick}
           className={cn(
             'hover:text-primary transition-colors',
             isRead && 'line-through'
