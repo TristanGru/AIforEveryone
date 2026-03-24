@@ -5,6 +5,11 @@ import type { HubArticle, Bucket } from '@/types'
 
 const HUB_DIR = path.join(process.cwd(), 'content', 'hub')
 
+function toDateString(value: unknown): string {
+  if (value instanceof Date) return value.toISOString().slice(0, 10)
+  return String(value ?? '')
+}
+
 const VALID_BUCKETS: Bucket[] = ['models', 'business', 'regulation', 'tools']
 
 function calculateReadingTime(content: string): number {
@@ -69,8 +74,8 @@ function parseArticleFile(bucket: Bucket, filename: string): HubArticle | null {
       readingTimeMin: calculateReadingTime(content),
       excerpt: data.excerpt as string,
       keyTakeaways: data.keyTakeaways as [string, string, string],
-      publishedAt: data.publishedAt as string,
-      lastReviewed: data.lastReviewed as string,
+      publishedAt: toDateString(data.publishedAt),
+      lastReviewed: toDateString(data.lastReviewed),
       sources: data.sources ?? [],
       relatedSlugs: validRelated,
       tags: data.tags,

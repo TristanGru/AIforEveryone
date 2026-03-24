@@ -6,8 +6,6 @@ import { WeeklyArchive } from '@/components/weekly/WeeklyArchive'
 import { JsonLd } from '@/components/shared/JsonLd'
 import { formatDate } from '@/lib/utils'
 
-export const revalidate = 3600
-
 export async function generateMetadata() {
   const { list } = getCurrentWeek()
   return getWeeklyMetadata(list)

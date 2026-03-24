@@ -5,6 +5,12 @@ import type { CareerPage, CareerMeta, CareerCategory } from '@/types'
 
 const CAREERS_DIR = path.join(process.cwd(), 'content', 'careers')
 
+// gray-matter/js-yaml may parse ISO date strings as Date objects even when quoted
+function toDateString(value: unknown): string {
+  if (value instanceof Date) return value.toISOString().slice(0, 10)
+  return String(value ?? '')
+}
+
 function parseCareerFile(filename: string): CareerPage | null {
   const filePath = path.join(CAREERS_DIR, filename)
   try {
@@ -38,8 +44,8 @@ function parseCareerFile(filename: string): CareerPage | null {
       recommendedReading: data.recommendedReading ?? [],
       toolsWorthKnowing: data.toolsWorthKnowing ?? [],
       version: data.version as string,
-      lastUpdated: data.lastUpdated as string,
-      publishedAt: data.publishedAt as string,
+      lastUpdated: toDateString(data.lastUpdated),
+      publishedAt: toDateString(data.publishedAt),
       body: content,
     }
   } catch {

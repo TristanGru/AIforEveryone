@@ -6,6 +6,11 @@ import type { WeeklyList, WeeklyItem, BonusItem } from '@/types'
 
 const WEEKLY_DIR = path.join(process.cwd(), 'content', 'weekly')
 
+function toDateString(value: unknown): string {
+  if (value instanceof Date) return value.toISOString().slice(0, 10)
+  return String(value ?? '')
+}
+
 function getMondayDate(date: Date = new Date()): string {
   const monday = startOfWeek(date, { weekStartsOn: 1 })
   return monday.toISOString().slice(0, 10)
@@ -27,7 +32,7 @@ function parseWeeklyFile(filename: string): WeeklyList | null {
     const { data } = matter(raw)
     const items = (data.items ?? []) as WeeklyItem[]
     return {
-      week: data.week as string,
+      week: toDateString(data.week),
       items: items as WeeklyList['items'],
       featuredSlot: (data.featuredSlot ?? 1) as WeeklyList['featuredSlot'],
       bonusItems: (data.bonusItems ?? []) as BonusItem[],
