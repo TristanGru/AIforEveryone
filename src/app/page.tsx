@@ -27,7 +27,7 @@ export default async function HomePage() {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecodedbrief.com'}/careers?q={search_term_string}`,
+        urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecodedbrief.com'}/professional-impacts?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },

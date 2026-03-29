@@ -48,8 +48,7 @@ export default function AboutPage() {
             worth your time (Tools).
           </p>
           <p>
-            Every article has two reading modes: Accessible (plain language, no assumptions)
-            and Technical (for people who want the details). Switch between them at any time.
+            Every article is written for clarity — plain language, no assumed expertise.
           </p>
 
           <h2>Professional Impacts</h2>
