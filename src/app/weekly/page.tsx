@@ -4,6 +4,7 @@ import { WeeklyList } from '@/components/weekly/WeeklyList'
 import { WeeklyCareerSpotlight } from '@/components/weekly/WeeklyCareerSpotlight'
 import { WeeklyArchive } from '@/components/weekly/WeeklyArchive'
 import { JsonLd } from '@/components/shared/JsonLd'
+import { SubscribeForm } from '@/components/shared/SubscribeForm'
 import { formatDate } from '@/lib/utils'
 
 export async function generateMetadata() {
@@ -32,17 +33,25 @@ export default async function WeeklyPage() {
     <>
       <JsonLd data={itemListJsonLd} />
       <div className="container mx-auto max-w-article px-4 py-10 sm:px-6">
-        <header className="mb-8 pb-8 border-b border-border">
-          <h1 className="text-2xl font-bold tracking-tight">This Week in AI</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            5 curated reads for the week of {formatDate(list.week)}
-          </p>
-
-          {isFallback && fallbackFrom && (
-            <p className="mt-3 text-sm text-muted-foreground italic">
-              Showing list from {formatDate(list.week)} — new list coming Monday.
+        <header className="mb-8 pb-8 border-b border-border flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight">This Week in AI</h1>
+            <p className="mt-1 text-sm text-muted-foreground">
+              5 curated reads for the week of {formatDate(list.week)}
             </p>
-          )}
+
+            {isFallback && fallbackFrom && (
+              <p className="mt-3 text-sm text-muted-foreground italic">
+                Showing list from {formatDate(list.week)} — new list coming Monday.
+              </p>
+            )}
+          </div>
+
+          <div className="sm:text-right sm:shrink-0 sm:max-w-xs w-full">
+            <p className="text-sm font-semibold text-foreground mb-1">Get this every Monday</p>
+            <p className="text-xs text-muted-foreground mb-3">One reading list, one career spotlight, no noise.</p>
+            <SubscribeForm />
+          </div>
         </header>
 
 {list.items.length > 0 ? (
