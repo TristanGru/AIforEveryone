@@ -1,22 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter, Merriweather } from 'next/font/google'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { ThemeProvider } from '@/context/ThemeContext'
 import '@/styles/globals.css'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const merriweather = Merriweather({
-  subsets: ['latin'],
-  weight: ['300', '400', '700'],
-  variable: '--font-merriweather',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   title: {
@@ -42,8 +28,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
+    <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+          rel="stylesheet"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `try{var t=localStorage.getItem('ai-decoded-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}`,
