@@ -1,0 +1,48 @@
+name: Send Newsletter
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/weekly/*.mdx'
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed weekly file
+        id: detect
+        run: |
+          CHANGED=$(git diff --name-only HEAD~1 HEAD -- content/weekly/ \
+            | grep -E '^content/weekly/[0-9]{4}-[0-9]{2}-[0-9]{2}\.mdx$' \
+            | head -1)
+          if [ -z "$CHANGED" ]; then
+            echo "No weekly MDX file changed — skipping send."
+            echo "week_date=" >> "$GITHUB_OUTPUT"
+          else
+            WEEK_DATE=$(basename "$CHANGED" .mdx)
+            echo "Detected weekly file: $CHANGED (week: $WEEK_DATE)"
+            echo "week_date=$WEEK_DATE" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup Node
+        if: steps.detect.outputs.week_date != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        if: steps.detect.outputs.week_date != ''
+        run: npm ci --ignore-scripts
+
+      - name: Send newsletter
+        if: steps.detect.outputs.week_date != ''
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_AUDIENCE_ID: ${{ secrets.RESEND_AUDIENCE_ID }}
+          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+        run: npx tsx scripts/send-newsletter.ts ${{ steps.detect.outputs.week_date }}
