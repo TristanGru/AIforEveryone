@@ -8,7 +8,6 @@ import { z } from 'zod'
 const BucketSchema = z.enum(['models', 'business', 'regulation', 'tools'])
 const LevelSchema = z.enum(['accessible', 'intermediate', 'technical'])
 const DayHintSchema = z.enum(['sunday', 'wednesday', 'friday'])
-const ThreatLevelSchema = z.enum(['low', 'moderate', 'significant', 'transformative'])
 const CareerCategorySchema = z.enum(['knowledge-workers', 'skilled-trades', 'service-workers', 'administrative', 'industrial-workers'])
 const TagSchema = z.string().max(30).regex(/^[a-z0-9-]+$/, 'Tags must be lowercase, no spaces')
 const DateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Date must be YYYY-MM-DD')
@@ -92,8 +91,9 @@ const CareerPageSchema = z.object({
   slug: z.string().regex(/^[a-z0-9-]+$/, 'Slug must be lowercase with hyphens only'),
   title: z.string().min(1).max(100),
   category: CareerCategorySchema,
-  threatLevel: ThreatLevelSchema,
-  threatExplainer: z.string().min(1).max(400),
+  riskLevel: z.enum(['low', 'medium', 'high']),
+  transformationLevel: z.enum(['low', 'medium', 'high']),
+  impactSummary: z.string().min(1).max(800),
   summary: z.string().min(1).max(200),
   whatIsChanging: z.array(z.string().min(100)).min(3).max(5),
   companyAdoptions: z.array(CompanyAdoptionSchema).min(2),
