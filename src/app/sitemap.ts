@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/hub/business`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
     { url: `${SITE_URL}/hub/regulation`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
     { url: `${SITE_URL}/hub/tools`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${SITE_URL}/careers`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${SITE_URL}/professional-impacts`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE_URL}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.4 },
   ]
 
@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   const careerPages: MetadataRoute.Sitemap = careers.map((c) => ({
-    url: `${SITE_URL}/careers/${c.slug}`,
+    url: `${SITE_URL}/professional-impacts/${c.slug}`,
     lastModified: new Date(c.lastUpdated),
     changeFrequency: 'monthly',
     priority: 0.7,

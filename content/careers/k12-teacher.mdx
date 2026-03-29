@@ -2,8 +2,9 @@
 slug: 'k12-teacher'
 title: 'K-12 Teacher'
 category: 'service-workers'
-threatLevel: 'low'
-threatExplainer: >
+riskLevel: 'low'
+transformationLevel: 'medium'
+impactSummary: >
   Teaching's core work — relationship-building, real-time responsiveness, social-emotional development, and classroom management — is not automatable. AI is reshaping the administrative layer: lesson planning, differentiation, feedback, and the academic integrity landscape. The role is changing significantly; the job is not disappearing.
 summary: >
   Teachers are not being replaced — but AI is transforming lesson planning, student support, and the meaning of written assignments.
@@ -85,7 +86,6 @@ Teaching is one of the most relationship-intensive professions. Students don't j
 
 What AI is changing is the work that happens around teaching: the planning, the paperwork, the documentation, and increasingly, the assessment landscape. That's significant. But it's different from replacing teachers.
 
-<Accessible>
 
 ## What Teachers Need to Know
 
@@ -111,54 +111,3 @@ The goal isn't catching cheaters. It's designing assessments where doing the thi
 
 **What you should do:** Pick one AI tool (MagicSchool.ai is a good starting point) and use it to cut the time you spend on your most tedious planning or documentation task. See what it produces, edit it, and notice where the gaps are. Start redesigning at least one major written assignment to be harder to shortcut with AI — not to police cheating, but to ensure the assignment is actually measuring thinking.
 
-</Accessible>
-
-<Technical>
-
-## The Landscape of AI in K-12: A Deeper Look
-
-### Adaptive Learning Systems
-
-Adaptive platforms like Carnegie Learning's MATHia, IXL, and DreamBox use item response theory (IRT) combined with machine learning to build probabilistic models of each student's knowledge state. As students work through problems, the system updates its estimate of which concepts the student has mastered, which are partially understood, and which are misconceptions — then selects the next problem accordingly.
-
-These systems do something a single teacher cannot do at scale: provide individualized practice sequences for 30 students simultaneously, adjusting problem difficulty and type in real time based on demonstrated performance. The teacher's role shifts to interpreting the data these platforms surface — identifying which misconceptions are widespread enough to require whole-class reteaching, which students need pull-out intervention, and which are ready for extension work.
-
-The limitation of adaptive platforms is that they're confined to domains with well-defined correct answers (math, foundational reading, vocabulary). Open-ended thinking, writing, discussion, and creative work remain outside their scope — and these are precisely the higher-order skills that educators and employers most value.
-
-### AI Writing Detection: What the Research Says
-
-Turnitin, GPTZero, and similar AI detection tools use a combination of statistical signals to classify text as likely AI-generated or human-written. The most common signal is **perplexity** — a measure of how "surprising" each word choice is given the preceding context. AI-generated text tends to have lower perplexity (more predictable word choices) than human writing, though this gap is narrowing as models improve.
-
-The documented reliability problems with these tools are serious:
-- False positive rates are elevated for non-native English writers, whose writing patterns can resemble AI output
-- Paraphrasing tools can substantially reduce AI detection rates
-- Newer AI models produce more varied, less "AI-sounding" text, reducing detection accuracy over time
-
-The National Council of Teachers of English (NCTE) and several major research universities have issued guidance advising against relying on AI detection tools as the primary basis for academic integrity sanctions. The evidentiary bar for discipline requires a level of accuracy these tools cannot currently provide.
-
-### LLMs as Pedagogical Tools: Design Considerations
-
-The Khanmigo design philosophy — Socratic questioning rather than answer-delivery — reflects a deliberate pedagogical choice informed by learning science: **desirable difficulty**. Struggle is a feature, not a bug, of effective learning. A tool that answers questions directly may reduce short-term frustration while undermining long-term retention and transfer.
-
-Teachers evaluating AI tutoring tools should ask:
-- Does the tool explain answers, or guide students toward reasoning?
-- Does it track misconceptions or just correct individual errors?
-- What does the conversation interface look like, and can teachers review student-AI interaction logs?
-- Is there evidence of learning outcomes from the specific context (grade level, subject) the tool is being used for?
-
-The research base for AI tutoring efficacy remains thin compared to decades of research on human tutoring (the "2-sigma problem" Bloom identified in 1984). Early studies on Khanmigo and similar tools show engagement and satisfaction benefits; learning outcome evidence is more limited and more recent.
-
-### AI Literacy as a Curriculum Imperative
-
-The fastest-growing area of teacher professional development in 2025-2026 is AI literacy instruction — how to teach students to use AI tools effectively, critically, and ethically. This is genuinely new terrain. There is no settled curriculum, no established pedagogical framework, and limited teacher preparation.
-
-The core competencies most frameworks are converging on:
-1. **Understanding what AI is and isn't** — probabilistic text generation vs. reasoning, knowledge cutoffs, hallucination
-2. **Effective prompting** — specifying context, audience, format, and constraints to get useful output
-3. **Critical evaluation** — verifying AI outputs, identifying errors and biases, knowing when to trust and when to check
-4. **Ethical use** — citation and disclosure norms, academic integrity, understanding when AI assistance is appropriate
-5. **Limitations and failure modes** — knowing what AI does badly (precision facts, recent events, personal knowledge, complex reasoning)
-
-Teachers who develop this curriculum knowledge now are well-positioned as schools formalize AI literacy as a cross-curricular expectation — which most district strategic plans already anticipate.
-
-</Technical>

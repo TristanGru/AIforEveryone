@@ -1,7 +1,8 @@
 export type { Bucket, Level, DayHint, WeeklyItem, WeeklyList, BonusItem } from './weekly'
 export type { Source, HubArticle } from './hub'
 export type {
-  ThreatLevel,
+  RiskLevel,
+  TransformationLevel,
   CareerCategory,
   CompanyAdoption,
   SkillImplications,

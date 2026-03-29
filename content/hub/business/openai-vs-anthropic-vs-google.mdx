@@ -27,7 +27,6 @@ If you've spent any time using AI tools, you've probably encountered at least on
 
 Quite a lot, it turns out — in history, culture, incentives, and vision.
 
-<Accessible>
 
 ## The Origin Stories
 
@@ -104,32 +103,3 @@ The honest answer: try all three, because they're genuinely different in feel.
 
 **Gemini (Google)** is the right choice if you're deep in Google's ecosystem — it integrates directly with Gmail, Google Docs, Drive, and Search in ways the others can't. Gemini Flash is extremely fast and cheap for high-volume tasks. And for anything involving up-to-date information from the web, Gemini's Google Search integration gives it an edge.
 
-</Accessible>
-
-<Technical>
-
-## Architectural and Training Differences
-
-All three labs use transformer-based architectures, but differ in training approach and design choices:
-
-**OpenAI's o-series models** (o1, o3) represent a distinct direction: inference-time compute scaling. Rather than just training larger models, these models spend more compute *at inference time* by performing chain-of-thought reasoning internally before responding. This is why o3 dramatically outperforms GPT-4o on math and coding benchmarks despite being from the same lab — it's a different paradigm, not just a bigger model. The o-series trades latency for accuracy on hard reasoning tasks.
-
-**Anthropic's Constitutional AI (CAI)** is its primary alignment technique. Rather than using only human raters to score outputs (RLHF), CAI has the model evaluate its own outputs against a set of written principles ("the constitution"), critique them, and revise. This allows alignment signals to be generated synthetically at scale without requiring humans to rate every response. Anthropic's interpretability research — attempting to understand what features activate inside the model — is arguably the most advanced in the industry. The "monosemanticity" work (finding that individual neurons in Claude represent coherent concepts) was a significant finding.
-
-**Google DeepMind's Gemini** architecture is natively multimodal — designed from the ground up to handle text, images, audio, and video, rather than adding modalities to a language-only base. Gemini 2.0 Flash is notable for its efficiency: competitive performance at much lower cost and latency than GPT-4o or Claude. Google's TPU infrastructure gives it a hardware advantage that independent labs cannot easily replicate.
-
-## Business Model and Incentive Analysis
-
-**OpenAI's structure** is unusual and worth understanding. The original nonprofit OpenAI Inc. still exists and controls the for-profit entity. Early investors received "capped" returns (originally 100x). The ongoing conversion to a standard C-corp and the Microsoft relationship created complex governance dynamics — illustrated by the November 2023 board crisis, where the fiduciary duty of the nonprofit board conflicted with the commercial interests of employees and investors.
-
-**Anthropic's** external funding creates interesting dependencies. Amazon's $4B investment came with a commitment to make AWS the primary cloud provider and to give AWS customers preferred access to Claude. Google also invested. Anthropic must remain commercially independent while being financially dependent on two of the largest AI infrastructure players — who are also competitors.
-
-**Google's** position is structurally different. It isn't trying to win the "AI product" market — it's trying to ensure AI doesn't *disrupt* its existing product market. The threat model is: if AI assistants replace web search, Google's core advertising revenue erodes. Gemini in Search (AI Overviews) is an attempt to evolve before being disrupted. This means Google's AI strategy is as much defensive moat-maintenance as it is offense.
-
-## Responsible Scaling Policies
-
-Anthropic's **Responsible Scaling Policy (RSP)** defines "AI Safety Levels" (ASL-1 through ASL-4) analogous to biosafety levels. Each ASL tier requires specific safety and security measures before deployment. ASL-3, which applies to models that could provide "meaningful uplift" to those seeking to create weapons of mass destruction, requires significantly higher security than current models. The RSP is a public commitment that creates accountability — competitors can criticize Anthropic for specific policy decisions in ways they can't with vague safety statements.
-
-OpenAI has a **Preparedness Framework** with similar categorical risk levels. Google DeepMind has published a **Frontier Safety Framework**. All three are attempts to create credible external commitments, though critics note all three are self-assessed and self-enforced.
-
-</Technical>

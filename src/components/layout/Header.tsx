@@ -9,7 +9,7 @@ import { ThemeToggle } from '@/components/layout/ThemeToggle'
 const NAV_LINKS = [
   { href: '/weekly', label: 'This Week' },
   { href: '/hub', label: 'Knowledge Hub' },
-  { href: '/careers', label: 'Careers' },
+  { href: '/professional-impacts', label: 'Professional Impacts' },
   { href: '/about', label: 'About' },
 ]
 

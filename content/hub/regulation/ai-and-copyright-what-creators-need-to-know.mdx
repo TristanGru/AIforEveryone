@@ -43,7 +43,6 @@ There are three separate copyright questions in the AI era, and they are often c
 
 Each one matters. Let's go through them.
 
-<Accessible>
 
 ## AI Cannot Own Copyright
 
@@ -110,50 +109,3 @@ A few practical realities worth holding onto:
 
 The legal picture will keep changing. Several of the cases mentioned here will likely reach appeals courts or even the Supreme Court within the next few years. What's clear now: if your work ends up in the output of an AI system, or if you want to claim ownership of something you made with AI help, understanding these distinctions isn't optional.
 
-</Accessible>
-
-<Technical>
-
-## Fair Use Doctrine: The Technical Legal Analysis
-
-The fair use analysis under **17 U.S.C. § 107** turns on four factors, none of which is individually determinative — courts weigh them together. Here is how those factors are actually being argued in the AI training context.
-
-**Factor 1: Purpose and character of the use.** The key question is whether the use is *transformative* — does it add new expression, meaning, or message, or does it simply supersede the original? AI companies rely heavily on *Authors Guild v. Google* (2d Cir. 2015), in which Google's indexing of millions of books for search was held transformative because it created a new tool for discovery, not a substitute for reading. Their argument: training creates statistical representations of language patterns, not copies. Critics counter that *Google Books* involved no commercial exploitation of the full text — AI models commercially monetize capability derived directly from that content.
-
-**Factor 4: Market effect.** This is typically the most important factor. Plaintiffs in the NYT case have the strongest argument here: they can demonstrate direct market substitution — ChatGPT reproducing articles that users would otherwise pay to read. The image generator cases are more complex; "in the style of" outputs may erode commissions even without literal reproduction. Establishing market harm at scale, and quantifying it, will be a central evidentiary challenge in these cases.
-
-**Intermediate copying doctrine.** In software copyright cases, courts have recognized that copying code during the process of building something new can be permissible even when the final product doesn't contain that code — *Sega v. Accolade* (9th Cir. 1992) is the leading precedent. AI companies are attempting to extend this to model training: the argument is that ingesting text or images to extract statistical patterns is analogous to loading a program into RAM to study it. Whether courts accept this extension is an open question.
-
-## The EU AI Act's Copyright Provisions
-
-The EU AI Act (Regulation (EU) 2024/1689) introduces obligations specifically targeting training data transparency.
-
-**Article 53** requires providers of general-purpose AI models to maintain and publish "sufficiently detailed summaries" of the training data used. The implementing regulation specifying what constitutes a sufficient summary is still being developed by the EU AI Office — the vagueness is intentional, allowing flexibility, but also means enforcement teeth are still forming.
-
-**Text and data mining exception — Article 4 of the EU Copyright Directive (2019/790).** The EU's copyright framework already contains a specific exception for text and data mining (TDM) for research purposes. Critically, **Article 4** allows commercial TDM but gives rights holders the ability to **opt out** — if a rights holder expressly reserves their content against TDM (via machine-readable metadata or robots.txt), scraping for AI training may be infringing. This opt-out framework is more creator-friendly than US fair use, which places the burden on plaintiffs to prove harm rather than requiring companies to obtain permission or honor reservations.
-
-Several EU member states are watching how the AI Act's transparency requirements interact with existing TDM opt-out rights. The combination could create a regime where training data use is both disclosed and legally challengeable — a meaningful shift from the current US approach.
-
-## Ownership of AI-Assisted Output: The Copyrightability Line
-
-The Copyright Office's framework from its 2024 report is more nuanced than the accessible summary suggests. The operative concept is **"selection and arrangement"** — a doctrine that protects human choices about what to include and how to organize it even when the underlying elements themselves are not original.
-
-In practice, this means:
-
-- **Prompts themselves are not sufficient.** The Office has stated that textual instructions to an AI do not establish the kind of creative control required for authorship, even if they are detailed. A prompt is more like a commission brief than a creative act.
-- **Post-generation editing and arrangement can create protectable expression.** If a human selects specific AI outputs from a larger set and arranges them into a coherent work, the selection and arrangement may be protected — not the individual outputs.
-- **Iterative generation with creative direction is a gray area.** The Office has acknowledged that complex, multi-step AI workflows where the human makes meaningful choices at each stage may be difficult to evaluate on a binary basis. This is an evolving area.
-
-The practical implication for technical teams building AI-assisted products: document your creative process. The degree of human editorial control, and whether you can evidence it, may determine whether your output is protectable intellectual property or freely usable by competitors.
-
-## What Remains Unresolved
-
-Several questions that will significantly affect both creators and AI developers lack clear legal answers as of early 2026:
-
-- **Does model weight storage constitute "copying"?** Copyright infringement typically requires copying — but model weights are statistical representations, not stored text. Whether they constitute copies under 17 U.S.C. § 106 is untested.
-- **What is the correct remedial theory?** The NYT is seeking destruction of GPT-4 under 17 U.S.C. § 503. Courts have never ordered destruction of a major commercial AI system. Whether this is a realistic remedy will be a significant question if plaintiffs prevail.
-- **International jurisdictional complexity.** Training may occur in one jurisdiction, inference in another, and the user in a third. Which country's copyright law applies is genuinely unclear — and the EU/US divergence on TDM opt-out creates real compliance asymmetries for global AI providers.
-
-The cases filed in 2023 are likely to generate appellate decisions in 2026-2027. The outcomes will define the ground rules for AI and copyright for at least a decade.
-
-</Technical>

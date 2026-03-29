@@ -113,23 +113,23 @@ export function getArticleMetadata(article: HubArticle): Metadata {
 
 export function getCareersMetadata(): Metadata {
   return buildMeta({
-    title: 'AI Career Impact — How AI Affects Your Job',
+    title: 'Professional Impacts — How AI Affects Your Profession',
     description:
       'Find out how AI is changing your profession. Threat levels, skill analysis, and what to do about it for 50+ careers.',
-    url: '/careers',
+    url: '/professional-impacts',
   })
 }
 
 export function getCareerMetadata(career: CareerPage): Metadata {
   const title = `How AI Is Affecting ${career.title}s in 2026`
-  const description = `${career.summary.slice(0, 120)} Threat level: ${career.threatLevel}.`.slice(
+  const description = `${career.summary.slice(0, 120)} Risk: ${career.riskLevel}. Transformation: ${career.transformationLevel}.`.slice(
     0,
     160
   )
   return buildMeta({
     title,
     description,
-    url: `/careers/${career.slug}`,
+    url: `/professional-impacts/${career.slug}`,
   })
 }
 

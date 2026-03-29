@@ -2,9 +2,10 @@
 slug: 'financial-analyst'
 title: 'Financial Analyst'
 category: 'knowledge-workers'
-threatLevel: 'significant'
-threatExplainer: >
-  AI is directly automating the core output of junior and mid-level financial analysis — data gathering, model building, and report generation. Senior analysts who can interpret AI-generated insights, challenge assumptions, and communicate findings to non-technical stakeholders will remain essential. The profession is bifurcating fast.
+riskLevel: 'high'
+transformationLevel: 'high'
+impactSummary: >
+  Finance has the highest AI automation exposure of any industry — Citigroup found 54% of finance jobs have high automation potential. Major banks have confirmed this is translating to actual hiring pullbacks: Goldman Sachs cut over 1,000 positions as part of its AI strategy, and Fortune reports firms are considering reducing entry-level analyst hiring by up to two-thirds. Unlike fields where a labor shortage absorbs productivity gains, investment banking has no such buffer. Senior analysts who can exercise judgment and advise clients will persist; junior data processing roles face the most direct displacement.
 summary: >
   AI automates model building and data work; analysts who synthesize insights and advise clients stay essential.
 version: '1.0'
@@ -71,7 +72,6 @@ toolsWorthKnowing:
 
 Financial analysis is among the white-collar professions experiencing the most direct AI disruption. The core deliverable — turning raw financial data into actionable investment insight — is increasingly a task where AI can do the first 80% faster than any human.
 
-<Accessible>
 
 ## What Financial Analysts Need to Know Now
 
@@ -88,20 +88,3 @@ The bifurcation happening in finance is stark. At bulge-bracket banks, the ratio
 - **Learn how to validate AI output.** In finance, a wrong number has serious consequences. The analyst who can catch AI hallucinations and modeling errors will be essential.
 - **Get comfortable with alternative data.** AI is unlocking analysis of satellite imagery, credit card transaction data, and web traffic that wasn't viable before.
 
-</Accessible>
-
-<Technical>
-
-## The Technical Shift in Financial Analysis
-
-The automation wave in financial analysis is driven by three converging capabilities: improved document understanding, structured data extraction, and financial reasoning in large language models.
-
-**Document understanding** via models fine-tuned on SEC filings can extract GAAP and non-GAAP metrics from 10-Ks, 10-Qs, and earnings releases with high accuracy. The challenge is auditing this extraction — errors in the input data propagate through downstream models. Analysts need to understand the failure modes of extraction pipelines.
-
-**Financial reasoning** in GPT-4 class models has improved substantially. Tools like FinChat and Bloomberg's AI layer can now construct DCF models from natural language instructions and explain their assumptions. However, these models hallucinate financial figures and confuse time periods — making validation skills non-negotiable.
-
-**Time series and cross-sectional analysis** using gradient boosting (XGBoost, LightGBM) and transformer-based models for financial data (FinBERT, FinGPT) can identify factor relationships that traditional statistical models miss. Understanding the difference between in-sample fit and out-of-sample predictability is critical when evaluating these tools.
-
-The senior analyst of 2028 will function more like a quant-analyst hybrid: understanding enough about ML model behavior to direct AI tools effectively, while maintaining the domain expertise and judgment that no model currently replicates.
-
-</Technical>

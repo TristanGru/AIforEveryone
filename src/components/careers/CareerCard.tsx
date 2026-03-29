@@ -1,19 +1,17 @@
 import Link from 'next/link'
 import { cn, formatDate, isNewContent } from '@/lib/utils'
-import type { CareerMeta, ThreatLevel } from '@/types'
+import type { CareerMeta, RiskLevel, TransformationLevel } from '@/types'
 
-const THREAT_COLORS: Record<ThreatLevel, string> = {
+const RISK_COLORS: Record<RiskLevel, string> = {
   low: 'text-emerald-700 dark:text-emerald-400',
-  moderate: 'text-yellow-700 dark:text-yellow-400',
-  significant: 'text-orange-700 dark:text-orange-400',
-  transformative: 'text-red-700 dark:text-red-400',
+  medium: 'text-yellow-700 dark:text-yellow-400',
+  high: 'text-red-700 dark:text-red-400',
 }
 
-const THREAT_LABELS: Record<ThreatLevel, string> = {
-  low: 'Low Impact',
-  moderate: 'Moderate Impact',
-  significant: 'Significant Impact',
-  transformative: 'Transformative Impact',
+const TRANSFORMATION_COLORS: Record<TransformationLevel, string> = {
+  low: 'text-sky-600 dark:text-sky-400',
+  medium: 'text-blue-700 dark:text-blue-400',
+  high: 'text-violet-800 dark:text-violet-400',
 }
 
 interface CareerCardProps {
@@ -25,7 +23,7 @@ export function CareerCard({ career }: CareerCardProps) {
 
   return (
     <Link
-      href={`/careers/${career.slug}`}
+      href={`/professional-impacts/${career.slug}`}
       className="group block border-b border-border py-5 last:border-b-0 hover:no-underline"
     >
       <div className="flex items-start justify-between gap-4">
@@ -39,14 +37,15 @@ export function CareerCard({ career }: CareerCardProps) {
             </span>
           )}
         </div>
-        <span
-          className={cn(
-            'flex-shrink-0 text-2xs font-semibold uppercase tracking-widest mt-0.5',
-            THREAT_COLORS[career.threatLevel]
-          )}
-        >
-          {THREAT_LABELS[career.threatLevel]}
-        </span>
+        <div className="flex-shrink-0 flex gap-2 mt-0.5">
+          <span className={cn('text-2xs font-semibold uppercase tracking-widest', RISK_COLORS[career.riskLevel])}>
+            Risk: {career.riskLevel}
+          </span>
+          <span className="text-2xs text-border">·</span>
+          <span className={cn('text-2xs font-semibold uppercase tracking-widest', TRANSFORMATION_COLORS[career.transformationLevel])}>
+            Change: {career.transformationLevel}
+          </span>
+        </div>
       </div>
 
       <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{career.summary}</p>

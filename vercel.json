@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/careers",
+      "destination": "/professional-impacts",
+      "permanent": true
+    },
+    {
+      "source": "/careers/:slug",
+      "destination": "/professional-impacts/:slug",
+      "permanent": true
+    }
+  ]
+}

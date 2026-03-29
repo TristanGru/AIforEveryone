@@ -2,9 +2,10 @@
 slug: 'software-engineer'
 title: 'Software Engineer'
 category: 'knowledge-workers'
-threatLevel: 'significant'
-threatExplainer: >
-  AI coding tools are automating the work that defined junior engineering roles — boilerplate, unit tests, debugging, documentation. The profession is not shrinking but is restructuring fast: fewer entry-level roles, expanding scope for engineers who direct AI effectively, and growing demand for those who build AI systems themselves.
+riskLevel: 'medium'
+transformationLevel: 'high'
+impactSummary: >
+  Total software engineering employment is still growing, but the entry-level market contracted noticeably in 2024–2025 as AI tools handle what previously required a full headcount of junior engineers. AI now writes roughly 40–46% of code at companies using GitHub Copilot. The profession isn't shrinking overall, but it's restructuring fast: fewer starting positions, expanding scope for engineers who direct AI effectively, and growing demand for those who build AI systems themselves.
 summary: >
   AI automates boilerplate and junior-level coding tasks; engineers who architect systems and direct AI tools effectively are increasingly valuable.
 version: '1.0'
@@ -81,7 +82,6 @@ toolsWorthKnowing:
 
 Software engineering occupies a unique position in the AI disruption conversation: engineers are both the primary builders of AI systems and among the most directly affected workers. The tools the industry is creating are actively reshaping the industry that created them.
 
-<Accessible>
 
 ## What Software Engineers Need to Know Now
 
@@ -101,24 +101,3 @@ The bifurcation happening in engineering is stark. Senior and staff engineers ar
 - **Invest in the communication layer.** The engineers who will be most valuable are those who can translate between business requirements and technical implementation with less and less hand-holding from product managers. AI handles the execution; humans handle the ambiguity.
 - **Do not skip the fundamentals.** There is a real risk that engineers who rely heavily on AI tools early in their careers never develop intuition for why things work. Systems thinking, debugging from first principles, and understanding performance characteristics are skills you still have to earn the hard way.
 
-</Accessible>
-
-<Technical>
-
-## The Technical Reality of AI Code Generation
-
-The current generation of AI coding tools is built on two complementary capabilities: large language models trained on code corpora, and retrieval-augmented systems that pull context from your specific codebase.
-
-**Code generation accuracy** is highly task-dependent. On well-scoped, self-contained tasks with clear inputs and outputs — writing a function to parse a specific data format, generating boilerplate for a known pattern — current models perform at or near human level. On open-ended architectural tasks, or tasks requiring reasoning about system-level behavior across multiple components, performance degrades significantly.
-
-**SWE-bench** is the most rigorous public benchmark for evaluating AI software engineering capability. It consists of 2,294 real GitHub issues from major open-source repositories, each requiring actual code changes to resolve. As of late 2025, top-performing systems are resolving roughly 50% of issues — a meaningful result, but one that significantly understates the gap on harder, more ambiguous engineering tasks that dominate real engineering work.
-
-**The security surface is expanding.** AI-generated code has measurable differences in vulnerability distribution compared to human-written code. Studies from Stanford and NYU have found that developers using AI assistants are more likely to introduce security vulnerabilities — not because the AI creates them directly, but because AI-generated code is often accepted with less scrutiny than code written by a colleague. Engineers reviewing AI output need to apply the same security review standards as any other code, plus awareness of AI-specific failure modes: hallucinated APIs that may conflict with real ones introduced later, over-trust in AI assertions about library behavior, and subtle logic errors in generated algorithms.
-
-**Context window limitations** mean that AI coding tools work best on bounded problems. For large codebases with complex interdependencies, current tools often generate code that is locally correct but globally inconsistent — it works in isolation but breaks existing contracts or introduces subtle incompatibilities. Retrieval-augmented systems that pull relevant context from the codebase partially address this, but engineers still need to verify that generated code integrates correctly with the system as a whole.
-
-**The agentic layer** — AI systems that autonomously execute multi-step engineering tasks — is where the next significant change will come from. Systems like Devin and OpenAI Codex (cloud-based) can already handle certain well-specified maintenance tasks end-to-end. The key architectural challenge is task decomposition and validation: breaking an underspecified goal into concrete, verifiable steps and checking each one. Current systems require high-quality specifications to perform reliably — which means the engineering skill of writing precise, unambiguous task descriptions is becoming more valuable, not less.
-
-The senior engineer of 2028 will function more like a technical director than an individual implementer: setting architectural direction, specifying tasks with enough precision for AI agents to execute them reliably, reviewing outputs at the level of correctness and system fitness, and handling the genuinely hard problems that resist automation.
-
-</Technical>

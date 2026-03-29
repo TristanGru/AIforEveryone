@@ -27,7 +27,7 @@ export function buildSearchIndex(articles: HubArticle[], careers: CareerMeta[]) 
     ...careers.map((c) => ({
       type: 'career' as const,
       title: c.title,
-      url: `/careers/${c.slug}`,
+      url: `/professional-impacts/${c.slug}`,
       excerpt: c.summary,
     })),
   ]

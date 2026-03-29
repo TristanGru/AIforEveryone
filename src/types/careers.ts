@@ -1,6 +1,7 @@
 import type { Level } from './weekly'
 
-export type ThreatLevel = 'low' | 'moderate' | 'significant' | 'transformative'
+export type RiskLevel = 'low' | 'medium' | 'high'
+export type TransformationLevel = 'low' | 'medium' | 'high'
 export type CareerCategory = 'knowledge-workers' | 'skilled-trades' | 'service-workers' | 'administrative' | 'industrial-workers'
 
 export interface CompanyAdoption {
@@ -34,8 +35,9 @@ export interface CareerPage {
   slug: string
   title: string
   category: CareerCategory
-  threatLevel: ThreatLevel
-  threatExplainer: string
+  riskLevel: RiskLevel
+  transformationLevel: TransformationLevel
+  impactSummary: string
   summary: string
   whatIsChanging: string[]
   companyAdoptions: CompanyAdoption[]
@@ -57,7 +59,7 @@ export interface CareerMeta
     | 'skillImplications'
     | 'recommendedReading'
     | 'toolsWorthKnowing'
-    | 'threatExplainer'
+    | 'impactSummary'
     | 'weeklySignalId'
     | 'body'
   > {}

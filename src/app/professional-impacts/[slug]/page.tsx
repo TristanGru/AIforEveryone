@@ -3,14 +3,12 @@ import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getAllCareers, getCareer } from '@/lib/content/careers'
 import { getCareerMetadata } from '@/lib/seo/metadata'
-import { ThreatLevel } from '@/components/careers/ThreatLevel'
+import { ImpactRating } from '@/components/careers/ImpactRating'
 import { CompanyAdoptionTable } from '@/components/careers/CompanyAdoptionTable'
 import { SkillsMatrix } from '@/components/careers/SkillsMatrix'
 import { LastUpdated } from '@/components/shared/LastUpdated'
+import { ShareButton } from '@/components/shared/ShareButton'
 import { JsonLd } from '@/components/shared/JsonLd'
-import { TechnicalModeProvider } from '@/context/TechnicalModeContext'
-import { Accessible, Technical } from '@/components/hub/ModeContent'
-import { TechnicalToggle } from '@/components/hub/TechnicalToggle'
 
 interface Props {
   params: { slug: string }
@@ -26,14 +24,12 @@ export async function generateMetadata({ params }: Props) {
   return getCareerMetadata(career)
 }
 
-const mdxComponents = { Accessible, Technical }
-
 export default async function CareerPage({ params }: Props) {
   const career = getCareer(params.slug)
   if (!career) notFound()
 
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aidecodedbrief.com'
-  const pageUrl = `${SITE_URL}/careers/${career.slug}`
+  const pageUrl = `${SITE_URL}/professional-impacts/${career.slug}`
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -51,22 +47,20 @@ export default async function CareerPage({ params }: Props) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Careers', item: `${SITE_URL}/careers` },
+      { '@type': 'ListItem', position: 2, name: 'Professional Impacts', item: `${SITE_URL}/professional-impacts` },
       { '@type': 'ListItem', position: 3, name: career.title, item: pageUrl },
     ],
   }
 
   return (
-    <TechnicalModeProvider>
+    <>
       <JsonLd data={articleJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
-
-      <TechnicalToggle />
 
       <div className="container mx-auto max-w-3xl px-4 py-8">
         {/* Breadcrumb */}
         <nav className="mb-4 flex items-center gap-1 text-xs text-muted-foreground" aria-label="Breadcrumb">
-          <Link href="/careers" className="hover:text-foreground">Careers</Link>
+          <Link href="/professional-impacts" className="hover:text-foreground">Professional Impacts</Link>
           <span aria-hidden="true">/</span>
           <span className="text-foreground">{career.title}</span>
         </nav>
@@ -81,15 +75,22 @@ export default async function CareerPage({ params }: Props) {
               <p className="mt-2 text-muted-foreground">{career.summary}</p>
             </div>
           </div>
-          <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-            <LastUpdated date={career.lastUpdated} />
-            <span>·</span>
-            <span>v{career.version}</span>
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+              <LastUpdated date={career.lastUpdated} />
+              <span>·</span>
+              <span>v{career.version}</span>
+            </div>
+            <ShareButton url={pageUrl} title={`How AI Is Affecting ${career.title}s in 2026`} />
           </div>
         </header>
 
-        {/* Threat Level */}
-        <ThreatLevel level={career.threatLevel} explainer={career.threatExplainer} />
+        {/* Impact Rating */}
+        <ImpactRating
+          riskLevel={career.riskLevel}
+          transformationLevel={career.transformationLevel}
+          impactSummary={career.impactSummary}
+        />
 
 
         {/* What Is Changing */}
@@ -115,7 +116,7 @@ export default async function CareerPage({ params }: Props) {
 
         {/* MDX Body */}
         <article className="prose prose-slate max-w-none mt-8">
-          <MDXRemote source={career.body} components={mdxComponents} />
+          <MDXRemote source={career.body} />
         </article>
 
         {/* Recommended Reading */}
@@ -162,6 +163,6 @@ export default async function CareerPage({ params }: Props) {
           </section>
         )}
       </div>
-    </TechnicalModeProvider>
+    </>
   )
 }

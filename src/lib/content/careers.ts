@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import type { CareerPage, CareerMeta, CareerCategory } from '@/types'
+import type { CareerPage, CareerMeta, CareerCategory, RiskLevel, TransformationLevel } from '@/types'
 
 const CAREERS_DIR = path.join(process.cwd(), 'content', 'careers')
 
@@ -30,8 +30,9 @@ function parseCareerFile(filename: string): CareerPage | null {
       slug,
       title: data.title as string,
       category: data.category as CareerCategory,
-      threatLevel: data.threatLevel,
-      threatExplainer: data.threatExplainer as string,
+      riskLevel: data.riskLevel as RiskLevel,
+      transformationLevel: data.transformationLevel as TransformationLevel,
+      impactSummary: data.impactSummary as string,
       summary: data.summary as string,
       whatIsChanging: data.whatIsChanging as string[],
       companyAdoptions: data.companyAdoptions ?? [],
@@ -67,11 +68,12 @@ export function getAllCareers(): CareerPage[] {
 
 export function getAllCareerMeta(): CareerMeta[] {
   return getAllCareers().map(
-    ({ slug, title, category, threatLevel, summary, lastUpdated, publishedAt, version }) => ({
+    ({ slug, title, category, riskLevel, transformationLevel, summary, lastUpdated, publishedAt, version }) => ({
       slug,
       title,
       category,
-      threatLevel,
+      riskLevel,
+      transformationLevel,
       summary,
       lastUpdated,
       publishedAt,

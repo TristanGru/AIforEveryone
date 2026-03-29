@@ -2,9 +2,10 @@
 slug: 'truck-driver'
 title: 'Truck Driver'
 category: 'industrial-workers'
-threatLevel: 'moderate'
-threatExplainer: >
-  Autonomous trucks are commercially operating on specific highway corridors right now — but full replacement is decades away. The more immediate shift is AI co-piloting long hauls while humans handle the unpredictable parts: city streets, docks, weather, and customers.
+riskLevel: 'medium'
+transformationLevel: 'medium'
+impactSummary: >
+  Full autonomous trucking is a 2030s story at the earliest — no U.S. state currently permits driverless commercial trucks on all road types. Near-term headcount risk is real but not imminent. What's changing now: route optimization AI, fatigue monitoring, predictive maintenance alerts, and Level 2–3 highway assistance mean drivers already interact with AI systems daily. The job is meaningfully transforming before it faces serious displacement.
 summary: >
   Autonomous trucks are real, but the 3.5 million U.S. drivers aren't going away soon. The job is changing before it disappears.
 version: '1.0'
@@ -80,7 +81,6 @@ toolsWorthKnowing:
 
 There are roughly 3.5 million truck drivers in the United States, and autonomous trucks are already commercially operating on public roads. Those two facts sound like they're on a collision course — but the reality is messier and slower than the headlines suggest.
 
-<Accessible>
 
 ## The Hype vs. The Reality
 
@@ -119,57 +119,3 @@ The drivers who are well-positioned are the ones treating technology as a skill 
 
 The job isn't going away. But the version of it that exists in 10 years will look different from the one that exists today.
 
-</Accessible>
-
-<Technical>
-
-## The Autonomy Stack: Why Highways Are Easier Than Cities
-
-The SAE defines six levels of driving automation (0–5). Most trucks on the road today operate at Level 2 (partial automation — the system controls steering and speed, but the human must remain engaged). Commercial driverless operations like Aurora are functioning at Level 4 within a tightly defined **Operational Design Domain (ODD)**.
-
-ODD is the key concept. An autonomous system doesn't need to handle all roads — it needs to handle a precisely specified set of conditions: specific highways, weather ranges, time-of-day restrictions, geo-fenced areas. Narrowing the ODD dramatically reduces the problem space. Aurora's initial ODD covers dry-weather daytime operations on Interstate highways in Texas — a far cry from general autonomy, but commercially viable.
-
-Highways are tractable for several reasons:
-- **Structured environment** — lanes are clear, intersections are rare, other actors are largely predictable
-- **High-quality map coverage** — HD maps with centimeter-level accuracy exist for major freight corridors
-- **Low pedestrian/cyclist density** — the long-tail edge cases that make urban autonomy hard largely disappear
-- **Consistent lighting and surface conditions** — compared to urban environments
-
-City streets, loading docks, and adverse weather represent orders-of-magnitude harder problems. These are the scenarios where perception systems struggle most (occluded objects, informal parking, human gesture communication) and where a failure has higher consequences.
-
-## Sensor Fusion: How the Truck Sees the World
-
-Commercial autonomous trucks use a combination of:
-
-- **Lidar** — fires laser pulses and measures return time to build a precise 3D point cloud of surroundings. Excellent spatial accuracy but expensive and affected by heavy rain/snow
-- **Radar** — uses radio waves, works in all weather, good at measuring velocity of other objects. Lower resolution than lidar
-- **Cameras** — dense visual information, essential for reading lane markings and signs, but requires significant processing and struggles in low light
-- **GPS/INS** — global positioning fused with inertial measurement for localization, typically accurate to ~10cm on mapped corridors
-
-The autonomy stack runs a **sensor fusion** pipeline that combines these inputs into a unified world model, tracks objects over time (predicting where other vehicles will be 3–5 seconds out), and feeds that model into motion planning. Motion planning outputs a trajectory; a lower-level control system executes it through steering and throttle/brake actuators.
-
-The failure modes are well-understood but not yet solved: sensor occlusion (one truck blocking the camera's view of a merging vehicle), adversarial edge cases (unusual objects the training distribution didn't cover), and sensor degradation in precipitation.
-
-## The Hub-and-Spoke Architecture at Scale
-
-The hub-to-hub model has structural advantages beyond just handling the "hard parts" with humans:
-
-**Cost structure**: Long-haul highway miles are the highest-cost segment per mile because of driver hours-of-service limits, overnight stops, and fatigue. Automating that segment while keeping cheaper local drivers on urban legs optimizes the cost curve.
-
-**Regulatory arbitrage**: Driverless truck regulations vary by state. Operating driverless only on corridors within permissive states (Texas, Arizona, Nevada) sidesteps the patchwork regulatory problem.
-
-**Fleet utilization**: Autonomous trucks don't need mandatory rest breaks under current HOS rules (an active regulatory debate). A driverless truck can run 22–23 hours per day vs. 11 hours for a human driver, dramatically improving asset utilization.
-
-The buildout of **transfer hub infrastructure** — parking facilities with the connectivity, power, and staffing to support driver handoffs — is a significant capital investment that's only beginning. This is a genuine bottleneck on deployment timelines.
-
-## Regulatory and Liability Landscape
-
-Federal regulation of autonomous vehicles falls primarily to NHTSA, but states regulate commercial vehicle operations, creating a patchwork. As of 2026:
-
-- **Texas, Arizona, Nevada** have the most permissive frameworks for driverless commercial vehicles
-- **California** requires additional state AV permits for driverless commercial operations
-- **Federal HOS rules** haven't been updated to address fully autonomous trucks — an active rulemaking area
-
-Liability remains an open legal question: when an autonomous truck is involved in a collision, who bears responsibility — the OEM, the autonomy software provider, the fleet operator? Most current commercial operations rely on contractual indemnification arrangements rather than settled law. This uncertainty is slowing fleet adoption at mid-tier carriers who can't absorb the liability exposure.
-
-</Technical>

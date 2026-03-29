@@ -27,7 +27,6 @@ Most people who try AI tools give up within two weeks. Not because the tools don
 
 This guide gives you a practical framework for building AI into your work in a way that actually sticks.
 
-<Accessible>
 
 ## The Right Mental Model
 
@@ -115,22 +114,3 @@ The biggest obstacle to AI adoption isn't the tools — it's the habit formation
 
 **Adjust your expectations.** The first output is rarely perfect. The value of AI isn't perfect first drafts — it's having a starting point that's 70% there in seconds, which you improve to 95% in minutes.
 
-</Accessible>
-
-<Technical>
-
-## Advanced Workflow Patterns for Technical Users
-
-For developers and technically-oriented knowledge workers, AI workflow integration goes deeper:
-
-**API-based automation:** Claude API, OpenAI API, and open models via Together AI or Groq can be integrated directly into internal tools, Zapier/Make workflows, and custom scripts. A common high-value pattern: automatically summarize CRM notes and draft follow-up emails when a meeting is logged.
-
-**RAG (Retrieval-Augmented Generation) for internal knowledge:** For teams with large internal document libraries (wikis, documentation, research), a simple RAG pipeline allows AI to answer questions grounded in your specific context. Tools like LlamaIndex and LangChain make this achievable without building from scratch. Self-hosted options (Ollama + local documents) work for sensitive internal data.
-
-**System prompts for consistency:** When building team-level AI tools, system prompts control AI behavior at the infrastructure level. A well-designed system prompt establishes the AI's role, knowledge constraints, response format, and escalation rules — creating consistent outputs across different users' prompts.
-
-**Evaluation frameworks:** At scale, AI workflow quality requires evaluation. LLM-as-judge (using a more capable model to evaluate outputs from a less capable or cheaper model) allows automated quality scoring. Tools like Braintrust, Langfuse, and Weave provide evaluation infrastructure.
-
-**Cost optimization:** For high-volume workflows, the model choice matters significantly. GPT-4o is often overkill for email drafting — GPT-4o-mini or Claude Haiku handles most routine tasks at 10-20x lower cost. Route tasks to the smallest capable model.
-
-</Technical>

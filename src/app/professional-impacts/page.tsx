@@ -12,13 +12,13 @@ export default async function CareersPage() {
   const itemListJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'AI Career Impact Pages',
+    name: 'AI Professional Impact Pages',
     numberOfItems: careers.length,
     itemListElement: careers.map((c, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       name: c.title,
-      url: `${SITE_URL}/careers/${c.slug}`,
+      url: `${SITE_URL}/professional-impacts/${c.slug}`,
     })),
   }
 
@@ -27,7 +27,13 @@ export default async function CareersPage() {
       <JsonLd data={itemListJsonLd} />
       <div className="container mx-auto max-w-content px-4 py-10 sm:px-6">
         <header className="mb-8 pb-8 border-b border-border">
-          <h1 className="text-2xl font-bold tracking-tight">How AI Affects Your Career</h1>
+          <h1 className="text-2xl font-bold tracking-tight">How AI Affects Your Profession</h1>
+          <p className="mt-3 text-sm text-muted-foreground max-w-2xl">
+            Each profession is rated on two dimensions. <strong className="text-foreground font-medium">Risk</strong> measures
+            whether AI is likely to reduce the number of positions in this field. <strong className="text-foreground font-medium">Change</strong> measures
+            how much the day-to-day work and required skills are shifting — even if headcount stays stable.
+            A radiologist faces low risk but high change; a graphic designer faces both.
+          </p>
         </header>
 
         <CareerSearch careers={careers} />

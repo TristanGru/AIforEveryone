@@ -35,7 +35,7 @@ export default function AboutPage() {
             working alongside it — plus three bonus reads for anyone who wants to go deeper.
           </p>
           <p>
-            Each week I also add a new Knowledge Hub article and a new career analysis, so the
+            Each week I also add a new Knowledge Hub article and a new professional impact analysis, so the
             library grows alongside the news. The weekly list has honest summaries and real
             reading-time estimates.
           </p>
@@ -52,14 +52,14 @@ export default function AboutPage() {
             and Technical (for people who want the details). Switch between them at any time.
           </p>
 
-          <h2>The Career Pages</h2>
+          <h2>Professional Impacts</h2>
           <p>
             The question I hear most often from people outside tech: &ldquo;Is AI going to take
             my job?&rdquo; The answer is almost always &ldquo;No, but it will change it.&rdquo;
-            The career pages are my attempt to help them feel more comfortable with their future.
+            The professional impact pages are my attempt to help them feel more comfortable with their future.
           </p>
           <p>
-            Each career page includes an impact level, an explanation of what&apos;s actually
+            Each professional impact page includes an impact level, an explanation of what&apos;s actually
             changing (with real company examples), a skills matrix showing what&apos;s declining
             and what&apos;s growing, and practical tools worth knowing.
           </p>
@@ -77,7 +77,7 @@ export default function AboutPage() {
         <div className="mt-10 border-t border-border pt-8">
           <h2 className="text-xl font-bold tracking-tight">Contact</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Have a career you&apos;d like to see covered? Found an error? I&apos;d love to hear from you.
+            Have a profession you&apos;d like to see covered? Found an error? I&apos;d love to hear from you.
           </p>
           <div className="mt-5">
             <ContactForm />

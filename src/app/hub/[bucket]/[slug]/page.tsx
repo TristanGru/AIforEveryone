@@ -3,16 +3,14 @@ import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getArticle, getArticlesByBucket, getRelatedArticles } from '@/lib/content/hub'
 import { getArticleMetadata } from '@/lib/seo/metadata'
-import { TechnicalToggle } from '@/components/hub/TechnicalToggle'
 import { KeyTakeaways } from '@/components/hub/KeyTakeaways'
 import { SourceList } from '@/components/hub/SourceList'
 import { ArticleCard } from '@/components/hub/ArticleCard'
+import { ShareButton } from '@/components/shared/ShareButton'
 import { BucketBadge } from '@/components/shared/BucketBadge'
 import { LevelBadge } from '@/components/shared/LevelBadge'
 import { ReadingTime } from '@/components/shared/ReadingTime'
 import { JsonLd } from '@/components/shared/JsonLd'
-import { TechnicalModeProvider } from '@/context/TechnicalModeContext'
-import { Accessible, Technical } from '@/components/hub/ModeContent'
 import { formatDate } from '@/lib/utils'
 import type { Bucket } from '@/types'
 
@@ -38,11 +36,6 @@ export async function generateMetadata({ params }: Props) {
   const article = getArticle(params.bucket as Bucket, params.slug)
   if (!article) return {}
   return getArticleMetadata(article)
-}
-
-const mdxComponents = {
-  Accessible,
-  Technical,
 }
 
 export default async function ArticlePage({ params }: Props) {
@@ -88,11 +81,9 @@ export default async function ArticlePage({ params }: Props) {
   }
 
   return (
-    <TechnicalModeProvider>
+    <>
       <JsonLd data={articleJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
-
-      <TechnicalToggle />
 
       <div className="container mx-auto max-w-article px-4 py-8 sm:px-6">
         {/* Breadcrumb */}
@@ -113,9 +104,16 @@ export default async function ArticlePage({ params }: Props) {
               {formatDate(article.publishedAt)}
             </time>
           </div>
-          <h1 className="font-serif text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-            {article.title}
-          </h1>
+          <div className="flex items-start justify-between gap-4">
+            <h1 className="font-serif text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+              {article.title}
+            </h1>
+            <ShareButton
+              url={`${SITE_URL}/hub/${article.bucket}/${article.slug}`}
+              title={article.title}
+              className="flex-shrink-0 mt-1"
+            />
+          </div>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{article.excerpt}</p>
         </header>
 
@@ -124,10 +122,7 @@ export default async function ArticlePage({ params }: Props) {
 
         {/* MDX Body */}
         <article className="prose prose-slate max-w-none">
-          <MDXRemote
-            source={article.body}
-            components={mdxComponents}
-          />
+          <MDXRemote source={article.body} />
         </article>
 
         <SourceList sources={article.sources} />
@@ -146,6 +141,6 @@ export default async function ArticlePage({ params }: Props) {
           </section>
         )}
       </div>
-    </TechnicalModeProvider>
+    </>
   )
 }

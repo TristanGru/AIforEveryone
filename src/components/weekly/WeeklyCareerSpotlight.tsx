@@ -12,10 +12,10 @@ export function WeeklyCareerSpotlight({ slug }: WeeklyCareerSpotlightProps) {
   return (
     <section className="mt-10 pt-8 border-t border-border" aria-labelledby="career-spotlight-heading">
       <h2 id="career-spotlight-heading" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
-        Career Spotlight
+        Professional Impact Spotlight
       </h2>
       <Link
-        href={`/careers/${career.slug}`}
+        href={`/professional-impacts/${career.slug}`}
         className="block rounded-xl border bg-card p-4 hover:border-primary/50 transition-colors"
       >
         <p className="font-semibold leading-tight">{career.title}</p>

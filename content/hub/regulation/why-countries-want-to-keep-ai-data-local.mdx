@@ -25,7 +25,6 @@ tags: ['data', 'policy', 'privacy', 'global']
 
 A leaked US State Department cable recently directed American diplomats worldwide to push back against "data sovereignty" initiatives in their host countries. The directive was blunt: these laws threaten US AI competitiveness and must be opposed. To understand why this is a big deal, you need to understand what data sovereignty actually means — and why both sides care so much.
 
-<Accessible>
 
 ## What Is Data Localization?
 
@@ -78,20 +77,3 @@ Countries that allow free data flows tend to get:
 
 There's no clean answer. The honest framing is that this is a genuine tradeoff between sovereignty and access — and different countries are making different bets about which matters more.
 
-</Accessible>
-
-<Technical>
-
-## The Technical Mechanics of Data Localization Compliance
-
-For AI systems specifically, data localization creates several distinct technical challenges beyond standard software compliance.
-
-**Training data residency vs. inference residency.** Most localization laws are written around data storage and processing, but AI creates a novel distinction: data used to *train* a model versus data processed during *inference* (when someone uses the model). A country might reasonably ask that inference requests from its citizens stay within its borders — that's operationally feasible with regional API endpoints. But if training data from that country was already used to train a global model, is that a violation? Most laws don't clearly address this, creating legal uncertainty.
-
-**Federated learning as a compliance strategy.** One technical approach to data localization is federated learning: training models locally on-device or in-region, then aggregating only model gradients (not raw data) across regions. The raw data never leaves the jurisdiction. This approach is used in some privacy-sensitive deployments (Google's keyboard prediction, for example) but adds significant complexity and typically produces less capable models than centralized training on the same data volume.
-
-**Sovereign cloud infrastructure.** Several major cloud providers now offer "sovereign cloud" products: physically isolated infrastructure, operated by local staff, with no access from parent company personnel in other jurisdictions. Microsoft Azure offers this in the EU; AWS has similar offerings. These products can satisfy some localization requirements but carry significant cost premiums (typically 2-3x standard pricing) due to the overhead of separate infrastructure and reduced economies of scale.
-
-**Data residency ≠ data sovereignty.** A subtle but legally important distinction: many laws require data *residency* (the data is stored in-country) without necessarily ensuring *sovereignty* (the country can actually access or control it). A US company can store data in a local data center while still encrypting it in ways that give them, not the local government, effective control. Some countries are increasingly aware of this gap and moving toward requirements for local key management and audit access — which raises the stakes further for AI companies operating in those markets.
-
-</Technical>

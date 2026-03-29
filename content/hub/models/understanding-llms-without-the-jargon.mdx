@@ -25,7 +25,6 @@ tags: ['explainer', 'llm', 'beginners']
 
 If you want to use AI tools well, it helps to understand what they're actually doing. Not at a technical level — you don't need to understand the math. But at the level of: "what is this thing, and why does it behave the way it does?"
 
-<Accessible>
 
 ## What an LLM Actually Is
 
@@ -87,24 +86,3 @@ Understanding how LLMs work changes how you should use them:
 
 **Ask for what you want, specifically.** Vague inputs produce vague outputs. "Help me with this email" → mediocre draft. "Write a reply to this email in a direct, professional tone under 100 words, declining the meeting request and suggesting we connect next quarter instead" → good draft.
 
-</Accessible>
-
-<Technical>
-
-## Technical Architecture: Transformer Models
-
-The "T" in ChatGPT stands for transformer — the neural network architecture underlying all modern LLMs.
-
-**Transformer architecture** (introduced by Google researchers in "Attention Is All You Need," 2017) uses a mechanism called **self-attention** to process entire sequences of tokens simultaneously, rather than sequentially as previous RNN-based models did. This parallelization enabled training on vastly larger datasets and unlocked the scale that makes modern LLMs possible.
-
-**Self-attention** allows each token to "attend to" every other token in the context window, learning which tokens are most relevant to each other for the current prediction. The attention weights are learned during training. This is why LLMs can handle long-range dependencies (connecting a pronoun to its antecedent many sentences earlier) that earlier models struggled with.
-
-**Scaling laws** (Kaplan et al., 2020; Hoffmann et al., 2022 "Chinchilla") showed that model performance scales predictably with three factors: model parameters, training compute, and training data. Chinchilla established that most models were undertrained relative to their parameter count — leading to a shift toward smaller models trained on more data (which is why Llama 3 8B can outperform early GPT-3 at 175B parameters).
-
-**Reinforcement Learning from Human Feedback (RLHF)** is the training technique that transforms raw language models into chatbots. Base models (pre-trained on next-token prediction) are aligned to be helpful, harmless, and honest by having human raters score responses and using those scores to fine-tune the model's reward function. This is why Claude and ChatGPT behave differently from raw GPT models — RLHF shapes their "personality" and safety behaviors.
-
-**Emergent capabilities** — the observation that some capabilities appear suddenly as model scale increases rather than improving gradually — are not fully understood. Instruction following, chain-of-thought reasoning, and multi-step problem solving all emerged at scale without being explicitly trained. Whether this represents genuine reasoning or sophisticated pattern completion remains an open research question.
-
-**Context windows** are expanding rapidly: GPT-4 launched with 8K tokens, now supports 128K. Claude 3 supports up to 200K tokens (roughly 150,000 words). The engineering challenges are significant — attention computation scales quadratically with context length, requiring architectural innovations (grouped query attention, flash attention, sparse attention) to make long contexts computationally feasible.
-
-</Technical>

@@ -1,9 +1,19 @@
 import Link from 'next/link'
+import { SubscribeForm } from '@/components/shared/SubscribeForm'
 
 export function Footer() {
   return (
     <footer className="mt-16 border-t border-border">
       <div className="container mx-auto max-w-content px-4 py-10 sm:px-6">
+
+        <div className="mb-8 pb-8 border-b border-border max-w-md">
+          <p className="text-sm font-semibold text-foreground mb-1">Get AI Decoded every Monday</p>
+          <p className="text-xs text-muted-foreground mb-3">
+            One reading list, one career spotlight, no noise.
+          </p>
+          <SubscribeForm />
+        </div>
+
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="font-serif text-base font-bold tracking-tight text-foreground">
@@ -24,8 +34,8 @@ export function Footer() {
             <Link href="/hub" className="hover:text-foreground transition-colors">
               Knowledge Hub
             </Link>
-            <Link href="/careers" className="hover:text-foreground transition-colors">
-              Careers
+            <Link href="/professional-impacts" className="hover:text-foreground transition-colors">
+              Professional Impacts
             </Link>
             <Link href="/about" className="hover:text-foreground transition-colors">
               About
