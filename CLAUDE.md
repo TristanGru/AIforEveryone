@@ -78,7 +78,7 @@ When compacting, always preserve:
 ## Session Log
 **2026-03-28 (session 2)** — Newsletter infrastructure complete. Subscribe form moved to right side of weekly page header. Deleted stale GitHub Pages deploy workflow. Built `scripts/send-newsletter.ts` (Resend Broadcasts API) and `.github/workflows/send-newsletter.yml`. GitHub secrets set: `RESEND_API_KEY`, `RESEND_AUDIENCE_ID`, `RESEND_FROM_EMAIL`. Domain `aidecodedbrief.com` verified in Resend.
 
-**2026-03-30** — Monday content session. Created two new content pieces:
+**2026-03-30** — Monday content + deploy session. Newsletter send via GitHub Actions + Resend confirmed working end-to-end: workflow fires on push to main when `content/weekly/*.mdx` changes, sends Resend broadcast to full audience. Created two new content pieces:
 1. **Hub article** — `content/hub/models/claude-explained-haiku-sonnet-opus-and-whats-coming-next.mdx` (slug: `claude-explained`). Full rundown of Anthropic's Claude model lineup: Claude 3 history, Claude 4 tiers (Haiku 4.5 / Sonnet 4.6 / Opus 4.6), access methods (Claude.ai / API / Claude Code / Cowork), Mythos leak section with light speculation. ~2,000 words.
 2. **Career page** — `content/careers/journalist.mdx`. riskLevel: medium, transformationLevel: high. Company adoptions: AP (Poynter source), WaPo Heliograf (Digiday source), Reuters Lynx Insight (Digiday source). 5 tools, 3 recommended reads, full article body.
 3. **Weekly spotlight** — wired `careerSpotlightSlug: 'journalist'` into `content/weekly/2026-03-30.mdx`.

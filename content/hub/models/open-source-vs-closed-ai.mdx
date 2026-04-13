@@ -1,0 +1,106 @@
+---
+slug: 'open-source-vs-closed-ai'
+bucket: 'models'
+title: 'Open Source vs. Closed AI: What the Difference Actually Means'
+level: 'accessible'
+readingTimeMin: 8
+excerpt: >
+  Open source and closed are used constantly in AI discussions, but they mean something more specific than most people realize. The core questions: who holds the model file, who sees your data, and what you are actually permitted to do with the output.
+keyTakeaways:
+  - 'Open source in AI usually means open-weight: the model is downloadable and runs on your own infrastructure. Meta Llama 4 and DeepSeek R1 are leading examples, each under different license terms.'
+  - 'Closed models (GPT-5, Claude, Gemini) are API-only. You send a request, receive a response, and the model is never in your possession. Your data passes through their infrastructure on every call.'
+  - 'Open-weight models run on your own servers, keeping your data internal. Closed models lead on performance and ease of use; the gap is narrowing, and open models cost roughly 87% less per token.'
+publishedAt: '2026-04-14'
+lastReviewed: '2026-04-14'
+sources:
+  - name: 'Meta — Llama 4: The Beginning of a New Era of Natively Multimodal AI'
+    url: 'https://ai.meta.com/blog/llama-4-multimodal-intelligence/'
+  - name: 'Llama 4 Community License Agreement'
+    url: 'https://www.llama.com/llama4/license/'
+  - name: 'DeepSeek-R1 — GitHub Repository (MIT License)'
+    url: 'https://github.com/deepseek-ai/DeepSeek-R1'
+  - name: 'World Economic Forum — What is open-source AI and how could DeepSeek change the industry?'
+    url: 'https://www.weforum.org/stories/2025/02/open-source-ai-innovation-deepseek/'
+  - name: 'MIT Sloan — AI Open Models Have Benefits. So Why Are They Not More Widely Used?'
+    url: 'https://mitsloan.mit.edu/ideas-made-to-matter/ai-open-models-have-benefits-so-why-arent-they-more-widely-used'
+relatedSlugs: ['understanding-llms-without-the-jargon']
+tags: ['open-source', 'models', 'privacy', 'llama', 'deepseek', 'explainer']
+---
+
+Every major AI conversation eventually runs into the open source vs. closed debate. It shapes decisions about which tools companies adopt, which models governments trust, and how AI development gets funded. But the terms are used loosely, and the actual differences are more specific — and more consequential — than the debate usually makes clear.
+
+Here is what you actually need to know.
+
+## What "Open Source" Means in Traditional Software vs. AI
+
+In traditional software, open source has a precise meaning: the source code is publicly available, can be inspected, modified, and redistributed under a defined license. The Open Source Initiative maintains the official definition, and it has been the standard for decades. Linux, Firefox, and Python are open source under this definition.
+
+AI has introduced a complication. The "source code" of an AI model is not the most important thing about it. What matters most is the **model weights** — the billions of numerical parameters produced by training. Without the weights, the source code to run the model is nearly useless. Without the training data, you cannot reproduce the model from scratch.
+
+This has led to a new term: **open-weight**. A model is open-weight when the trained weights are publicly released and can be downloaded and run on your own hardware. This is what most people mean when they say "open source AI" — but the two terms are not equivalent.
+
+## The Main Players
+
+The most significant open-weight model families right now are Meta's Llama 4, DeepSeek R1, and Alibaba's Qwen 3 — though they operate under different terms and have different strengths.
+
+**Llama 4** was released by Meta in April 2025. Two versions are publicly available — Scout and Maverick — with weights downloadable from [llama.com](https://www.llama.com/llama-downloads/) and Hugging Face. Llama 4 is natively multimodal, meaning it can process text and images. However, Llama 4 is distributed under the [Llama 4 Community License Agreement](https://www.llama.com/llama4/license/) — a custom license, not an OSI-approved open source license. It imposes restrictions: products built on Llama 4 with more than 700 million monthly active users must request a separate license from Meta, and the Acceptable Use Policy prohibits certain applications.
+
+**DeepSeek R1** was released by the Chinese AI lab DeepSeek in January 2025. Unlike Llama 4, R1 is distributed under the **MIT license** — one of the most permissive licenses available, allowing commercial use, modification, and use as a basis for other models with minimal restrictions. R1 matched OpenAI's o1 on several math and reasoning benchmarks at the time of release. The model and its distilled variants are available on [GitHub](https://github.com/deepseek-ai/DeepSeek-R1) and Hugging Face.
+
+**Qwen 3** is the open-weight model family from Alibaba's AI lab. The largest variants — Qwen 3.5 at 235 billion parameters — now rank among the top open-weight models on reasoning and coding benchmarks, competitive with Llama 4 Maverick and DeepSeek R1. Qwen models are available on Hugging Face under licenses that permit commercial use.
+
+On the closed side, the major models are OpenAI's GPT-5, Anthropic's Claude (Haiku, Sonnet, and Opus), and Google's Gemini. All of these are available only through APIs. You send a request; the company's servers process it; you receive a response. The model weights are never in your possession.
+
+## The Differences That Actually Matter
+
+### Who sees your data
+
+This is the most consequential practical difference, and it is often underweighted in the open vs. closed debate.
+
+When you use a closed model via API — whether that is ChatGPT, Claude, or Gemini — your input travels to the provider's servers, is processed there, and the response is sent back to you. The provider's data handling policies, data retention practices, and security posture all apply to your inputs. Most major providers offer enterprise tiers with stronger data protection guarantees, but the data still leaves your infrastructure.
+
+With an open-weight model deployed on your own servers, none of that applies. The model runs on hardware you control. Your inputs never leave your network. For organizations handling sensitive data — legal documents, medical records, proprietary financial information, government communications — this is not a minor preference. It is often the deciding factor.
+
+### What it costs
+
+The cost difference between open-weight and closed models is substantial at scale. Closed APIs typically run several times more per token than equivalent open-weight deployments on your own infrastructure — the gap widens significantly at high volume, and pricing shifts constantly as providers compete and hardware costs fall.
+
+For most individual users, this difference is invisible — you pay a flat subscription fee for ChatGPT or Claude and never see a per-token number. For companies processing millions of documents, or developers building applications at scale, the cost structure changes the economics of what is feasible.
+
+### How good it is
+
+Closed models, particularly GPT-5, Claude Opus, and Gemini, have generally led on capability benchmarks — complex reasoning, coding, instruction-following, and multimodal tasks. But the gap has narrowed significantly.
+
+DeepSeek R1 matched OpenAI's o1 on math and reasoning tasks at release. Meta's Llama 4 Maverick and Qwen 3.5 now perform competitively with GPT-4-tier closed models across a wide range of tasks. On most standard benchmarks, top open-weight models now score within a few percentage points of leading closed models at release, and the gap typically narrows further within months as open models are fine-tuned and improved by the broader community.
+
+The performance lead for closed models is real but shrinking. For most business applications — document processing, summarization, code generation, customer-facing chat — open-weight models running on adequate hardware are now competitive.
+
+### What you can customize
+
+This is where open-weight models have a structural advantage closed models cannot easily match.
+
+When you have the weights, you can fine-tune the model on your own data — training it to behave in ways specific to your domain, your terminology, and your use case. A law firm can fine-tune an open-weight model on thousands of its own contracts, producing a model that generates drafts closer to its house style than any general-purpose closed model could. A healthcare organization can fine-tune on its clinical documentation, keeping the data entirely internal.
+
+Closed model providers offer limited fine-tuning options for some models, but you are working within constraints they set, on data that passes through their infrastructure.
+
+## The "Open Source" Label Is Not Always What It Sounds Like
+
+The casual use of "open source AI" covers a range of arrangements with meaningfully different implications.
+
+DeepSeek R1, with its MIT license, is close to the traditional open source ideal: the weights and code are freely available, commercially usable, and can form the basis of entirely new models without restriction.
+
+Meta's Llama 4 is open-weight with restrictions. The license is more permissive than a proprietary API, but it is not OSI-certified open source. For most developers and businesses, the distinction is practical rather than ideological — check the license terms before building a product.
+
+A third category exists: models from companies like Mistral, which release some models as open-weight and offer others only through commercial APIs. The "open" reputation of the company does not automatically apply to every model they release.
+
+True open source, in the full traditional sense — including training data, code, and weights, under an OSI-approved license — remains rare for frontier models. The compute and data required to train them make releasing everything economically and competitively impractical for the organizations doing it.
+
+## What This Means for You
+
+**If you are using AI as an individual** — through ChatGPT, Claude, Gemini, or similar consumer products — the open vs. closed distinction affects you primarily through which companies you trust with your data and which tools you prefer. You are not running models locally; the technical architecture is largely invisible.
+
+**If you are evaluating AI tools for a business**, the distinction matters immediately. What data will pass through external servers? What are your contractual obligations around client data? Does the use case justify a closed model's capabilities and costs, or does a self-hosted open-weight model meet your needs with better data control?
+
+**If you work in a heavily regulated industry** — healthcare, finance, law, government — self-hosting open-weight models is increasingly the standard approach for sensitive workloads. The EU AI Act's data residency requirements, HIPAA, and attorney-client privilege all create strong pressure toward keeping data within defined boundaries.
+
+The open vs. closed debate is sometimes framed as a question of corporate philosophy — who should control powerful AI? That is a legitimate question. But for most decisions in practice, it reduces to something more concrete: where does your data go, what can you do with the model, and what does it cost to run?
