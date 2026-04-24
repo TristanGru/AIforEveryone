@@ -67,6 +67,25 @@ AI Decoded is a Next.js 14 content platform explaining AI's impact on profession
 - Do not use analogies to explain AI concepts — explain clearly and correctly; analogies feel condescending to the audience
 - Hub articles and career pages are accessible-first — no jargon without plain-English explanation inline
 
+### Prose Style (career pages and hub articles)
+The writing style for all content is direct, plain, and evidence-based. Modeled on clear academic and professional writing, not AI-generated marketing copy.
+
+**No em dashes.** Replace — with a comma, a period, or restructure the sentence. "The core deliverable, turning data into insight, is..." not "The core deliverable — turning data into insight — is..."
+
+**No bold text within prose sentences for emphasis.** Do not bold a word or phrase mid-sentence to make a point land harder. Use sentence structure instead. This includes patterns like `**Legal research** was always labor-intensive:` — remove the bold, rewrite the sentence. Bulleted and numbered lists are fine; bold list headers are fine.
+
+**No label-value formatting within prose.** Avoid patterns like `**The task:**`, `**How to do it:**`, `**What changes:**`, `**Time saved:**`, `**Honest math:**`, `**Who this is for:**` used as inline labels in paragraphs. These are fine as list item headers.
+
+**No dramatic framing.** Avoid "The uncomfortable truth:", "But here's the equally important truth:", "The honest picture:", "Here's the thing:". State the point directly.
+
+**No italic emphasis within prose.** Do not use *italics* to stress a word mid-sentence. Rewrite so the sentence carries the emphasis without formatting.
+
+**No AI-flavored phrasing.** Avoid: "genuinely", "it's worth noting", "dive deep", "delve into", "it's important to understand", "let's explore", "in a nutshell". Write plainly.
+
+**Connecting words over punctuation.** Use "however", "rather", "additionally", "furthermore", "on the other hand", "at the same time" to connect ideas. Do not use em dashes as connectors.
+
+**Short to medium sentences.** One idea per sentence is usually enough. Longer sentences are fine when the content genuinely requires it, but not as a default.
+
 ## Context Management
 When compacting, always preserve:
 - The current task and its exact status (done / in progress / blocked)

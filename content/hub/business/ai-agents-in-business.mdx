@@ -31,9 +31,9 @@ Here is what AI agents actually are, what companies are deploying them for right
 
 A standard AI model like ChatGPT takes a prompt and produces text. That is the complete interaction: input, output, done.
 
-An AI agent does more. It can take actions — not just describe them. Specifically, agents can call external tools: running a web search, querying a database, executing code, sending an email, filling out a form, calling an API. A model becomes an agent when it can interact with systems outside itself to accomplish a task, rather than just responding to a prompt.
+An AI agent does more. It can take actions, not just describe them. Specifically, agents can call external tools: running a web search, querying a database, executing code, sending an email, filling out a form, calling an API. A model becomes an agent when it can interact with systems outside itself to accomplish a task, rather than just responding to a prompt.
 
-The other defining feature of agents is multi-step reasoning. A basic model answers your question in one pass. An agent can break a goal into steps, take action, check the result, and adjust its approach — all without a human directing each step. This is why the term "agentic" gets used: the system has some degree of autonomy in how it pursues an outcome.
+The other defining feature of agents is multi-step reasoning. A basic model answers your question in one pass. An agent can break a goal into steps, take action, check the result, and adjust its approach, all without a human directing each step. This is why the term "agentic" gets used: the system has some degree of autonomy in how it pursues an outcome.
 
 That autonomy is also why agents are harder to deploy safely than standard AI. When a model's only output is text, a human reviews it before anything happens. When an agent can take actions, mistakes propagate into real systems. The companies doing this well are thinking carefully about what the agent is and isn't allowed to do.
 
@@ -45,44 +45,38 @@ Across enterprise deployments, three patterns account for the vast majority of r
 
 The most common pattern. An agent handles a defined, multi-step workflow that previously required a human to coordinate between systems.
 
-**What it looks like in practice:** A customer submits a refund request. The agent reads the request, looks up the order in the CRM, checks the refund policy in the company knowledge base, determines eligibility, drafts a response, and — if the claim is under $200 — issues the refund automatically. A human only gets involved if the claim exceeds the threshold or the situation doesn't match a known pattern.
+A customer submits a refund request. The agent reads the request, looks up the order in the CRM, checks the refund policy in the company knowledge base, determines eligibility, drafts a response, and, if the claim is under $200, issues the refund automatically. A human only gets involved if the claim exceeds the threshold or the situation doesn't match a known pattern.
 
-**Why it works:** The task is well-defined. The decision criteria are clear. The failure modes are understood and bounded. Human review is built in at the right threshold.
-
-**Where it breaks down:** When edge cases proliferate, when the decision criteria are ambiguous, or when mistakes have serious consequences that compound before a human can intervene.
+This works when the task is well-defined, the decision criteria are clear, and the failure modes are understood and bounded. It breaks down when edge cases proliferate, when the decision criteria are ambiguous, or when mistakes have serious consequences that compound before a human can intervene.
 
 ### 2. Decision Support
 
-The agent does the research and synthesis; a human makes the final call. This pattern is widespread in knowledge-intensive work — legal, finance, medicine, strategy.
+The agent does the research and synthesis; a human makes the final call. This pattern is widespread in knowledge-intensive work, including legal, finance, medicine, and strategy.
 
-**What it looks like in practice:** A financial analyst asks an agent to pull the last five years of a company's earnings reports, identify the key drivers of margin compression, and summarize the analyst consensus. The agent runs the searches, reads the documents, and returns a structured briefing. The analyst uses it to inform their own judgment rather than replacing it.
+A financial analyst asks an agent to pull the last five years of a company's earnings reports, identify the key drivers of margin compression, and summarize the analyst consensus. The agent runs the searches, reads the documents, and returns a structured briefing. The analyst uses it to inform their own judgment rather than replacing it.
 
-**Why it works:** The value is speed and coverage, not autonomy. The human's judgment is still in the loop on consequential decisions. Errors in the agent's output are caught before they become actions.
-
-**Where it breaks down:** When the human stops actually reviewing the agent's work and just rubber-stamps it. This is a workflow discipline problem, not a technology problem — but it's a real one.
+The value is speed and coverage, not autonomy. The human's judgment is still in the loop on consequential decisions. Where this breaks down is when the human stops actually reviewing the agent's work and rubber-stamps it. That is a workflow discipline problem, not a technology problem, but it is a real one.
 
 ### 3. Knowledge Retrieval
 
 Agents connected to internal company documentation, policy libraries, or proprietary databases, answering questions that previously required emailing the right person or digging through a file system.
 
-**What it looks like in practice:** An HR employee asks the agent "what's our policy on reimbursing home office equipment for remote workers in California?" The agent searches the internal policy database, finds the relevant document, and returns a direct answer with a source link. No ticket, no waiting.
+An HR employee asks the agent "what's our policy on reimbursing home office equipment for remote workers in California?" The agent searches the internal policy database, finds the relevant document, and returns a direct answer with a source link. No ticket, no waiting.
 
-**Why it works:** The value proposition is simple and measurable. The agent doesn't need to reason deeply; it needs to find the right document and extract the right information. Hallucination risk is managed by grounding responses in actual source documents.
-
-**Where it breaks down:** When the underlying knowledge base is outdated, inconsistent, or poorly organized. Agents retrieve what's there — they can't fix what isn't.
+The value proposition is simple and measurable. The agent doesn't need to reason deeply; it needs to find the right document and extract the right information. Hallucination risk is managed by grounding responses in actual source documents. This breaks down when the underlying knowledge base is outdated, inconsistent, or poorly organized. Agents retrieve what's there; they can't fix what isn't.
 
 ## What the Successful Deployments Have in Common
 
-The pattern across successful business agent deployments is not the most impressive technology — it's the narrowest scope.
+The pattern across successful business agent deployments is not the most impressive technology; it's the narrowest scope.
 
 The companies getting real value are deploying agents to do one specific thing well: handle refunds under a threshold, summarize earnings reports, answer HR policy questions. They're not deploying general-purpose agents and asking them to "help with everything." The more open-ended the task, the harder it is to define success, catch errors, and maintain quality.
 
-The second pattern is that the best deployments build in human review at the right points. Not everywhere — that eliminates the efficiency gain. Not nowhere — that's how errors compound into real damage. The skill is identifying where in the workflow a human check adds enough value to justify the friction.
+The second pattern is that the best deployments build in human review at the right points. Not everywhere, since that eliminates the efficiency gain. Not nowhere; that's how errors compound into real damage. The skill is identifying where in the workflow a human check adds enough value to justify the friction.
 
 The third pattern is iterative rollout. No successful enterprise deployment started at full scale. Pilots with small user groups, defined evaluation criteria, and clear escalation paths consistently outperform big-bang rollouts.
 
 ## Where This Is Going
 
-The constraint on business agents right now is not the underlying model capability — it's trust and integration. Companies are cautious about giving agents write access to core systems, and rightfully so. As reliability improves and audit trails become more robust, the scope of what agents are authorized to do will expand.
+The constraint on business agents right now is not the underlying model capability; it's trust and integration. Companies are cautious about giving agents write access to core systems, and rightfully so. As reliability improves and audit trails become more robust, the scope of what agents are authorized to do will expand.
 
-The trajectory is more autonomy in bounded domains, not general-purpose agents running entire departments. The business deployments that will grow fastest are the ones where the outcome is measurable, the failure modes are understood, and the human oversight structure is thought through before the agent goes live — not after.
+The trajectory is more autonomy in bounded domains, not general-purpose agents running entire departments. The business deployments that will grow fastest are the ones where the outcome is measurable, the failure modes are understood, and the human oversight structure is thought through before the agent goes live, not after.
